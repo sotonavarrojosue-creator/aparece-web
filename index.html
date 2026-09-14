@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APARECÉ — Presencia Digital y Cursos · Costa Rica</title>
+<meta name="description" content="Páginas web para negocios de Costa Rica y cursos gratuitos de programación. Si no aparece en Google, no existe.">
+<meta name="theme-color" content="#F6F1E7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 2 C14.3 2 0 16.3 0 32 C0 56 32 62 32 62 C32 62 64 56 64 32 C64 16.3 49.7 2 32 2 Z' fill='%23FF5A1F'/%3E%3Ccircle cx='32' cy='32' r='16' fill='%230B0F14'/%3E%3Cpath d='M25 32 L30 37 L39 27' stroke='%23F6F1E7' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --carbono:  hsl(220 12% 7%);
+    --carbono-2: hsl(220 10% 13%);
+    --carbono-3: hsl(220 10% 18%);
+    --papel:    hsl(40 33% 96%);
+    --papel-2:  hsl(40 26% 90%);
+    --naranja:  hsl(24 95% 52%);
+    --naranja-osc: hsl(24 90% 42%);
+    --gris:     hsl(220 8% 38%);
+    --gris-claro: hsl(220 8% 60%);
+    --hairline: hsl(220 10% 82%);
+    --verde:    hsl(140 45% 48%);
+    --disp: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --body: 'Barlow', 'Helvetica Neue', sans-serif;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+    --r-btn: 2px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family: var(--body);
+    background: var(--papel);
+    color: var(--carbono);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--naranja); color: var(--papel); }
+  :focus-visible { outline: 3px solid var(--naranja); outline-offset: 2px; }
+  img { max-width:100%; display:block; }
+  a { color: inherit; }
+
+  /* --- utilidades --- */
+  .wrap { max-width: 1160px; margin-inline: auto; padding-inline: 24px; }
+  .mono { font-family: var(--mono); }
+  .disp { font-family: var(--disp); }
+  .idx { font-family: var(--mono); font-size: 13px; letter-spacing: 2px; color: var(--naranja); }
+  .lbl { font-family: var(--mono); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); }
+
+  /* --- header --- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--papel) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .nav { display:flex; align-items:center; justify-content:space-between; gap:24px; padding-block:14px; }
+  .brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand svg { height:34px; }
+  .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration:none; color: var(--carbono); position:relative;
+  }
+  .nav-links a::after { content:''; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--naranja); transition: width .2s var(--ease); }
+  .nav-links a:hover::after { width:100%; }
+  .btn {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family: var(--mono); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration:none; padding: 12px 22px; border-radius: var(--r-btn);
+    border: 1.5px solid var(--carbono); background: var(--carbono); color: var(--papel);
+    transition: background .18s var(--ease), color .18s var(--ease), transform .18s var(--ease);
+  }
+  .btn:hover { background: var(--naranja); border-color: var(--naranja); transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--carbono); }
+  .btn.ghost:hover { background: var(--carbono); color: var(--papel); border-color: var(--carbono); }
+  .btn-big { font-size: 15px; padding: 16px 30px; }
+
+  /* --- hero --- */
+  .hero { padding: 88px 0 72px; }
+  .hero-grid { display:grid; grid-template-columns: 5fr 4fr; gap: 64px; align-items:center; }
+  .kicker { display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+  .kicker-line { width:44px; height:2px; background: var(--naranja); }
+  .kicker-txt { font-family: var(--mono); font-size: 13px; letter-spacing: 3px; }
+  .hero h1 {
+    font-family: var(--disp); font-weight: 800; text-transform: uppercase;
+    font-size: clamp(52px, 7vw, 88px); line-height: 0.95; letter-spacing: 1px;
+    text-wrap: balance; margin-bottom: 24px;
+  }
+  .hero h1 em { font-style: normal; color: var(--naranja); }
+  .hero p.lead { font-size: 19px; max-width: 46ch; color: var(--carbono-2); margin-bottom: 34px; }
+  .hero-ctas { display:flex; gap:16px; flex-wrap:wrap; }
+  .hero-note { margin-top: 20px; font-family: var(--mono); font-size: 12px; color: var(--gris); letter-spacing: .5px; }
+
+  /* --- panel de stats --- */
+  .panel {
+    border: 1.5px solid var(--carbono); background: var(--carbono); color: var(--papel);
+    padding: 28px 26px; position: relative;
+  }
+  .panel::before {
+    content: 'APARECÉ · STATS'; position:absolute; top:-11px; left:18px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--carbono);
+    background: var(--naranja); padding: 2px 10px;
+  }
+  .panel-row { display:flex; justify-content:space-between; align-items:baseline; padding: 14px 0; border-top: 1px solid hsl(220 10% 30%); }
+  .panel-row span:first-child { font-family: var(--mono); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: hsl(40 20% 78%); }
+  .panel-row span:last-child { font-family: var(--disp); font-weight: 700; font-size: 22px; letter-spacing: .5px; }
+  .panel-row .ok { color: hsl(140 50% 55%); }
+  .panel-row .accent { color: var(--naranja); }
+
+  /* --- secciones --- */
+  .sec { padding: 72px 0; }
+  .sec.dark { background: var(--carbono); color: var(--papel); }
+  .sec-head { display:flex; align-items:baseline; gap: 22px; margin-bottom: 40px; }
+  .sec-head h2 { font-family: var(--disp); font-weight: 700; text-transform: uppercase; font-size: clamp(34px, 4.5vw, 54px); line-height: 1; letter-spacing: 1px; }
+  .sec-head .mono { font-size: 12.5px; letter-spacing: 2px; }
+
+  /* --- servicio: layout editorial --- */
+  .svc-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .svc-left h3 { font-family: var(--disp); font-weight: 700; font-size: 28px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
+  .svc-left p { color: var(--gris); max-width: 44ch; margin-bottom: 20px; }
+  .svc-right { border-left: 1.5px solid var(--hairline); padding-left: 40px; }
+  .svc-list { list-style:none; }
+  .svc-list li {
+    display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: baseline;
+    padding: 16px 0; border-bottom: 1px solid var(--hairline);
+  }
+  .svc-list .num { font-family: var(--mono); font-size: 14px; letter-spacing: 2px; color: var(--naranja); }
+  .svc-list h4 { font-family: var(--disp); font-weight: 600; font-size: 20px; text-transform: uppercase; letter-spacing: .5px; }
+  .svc-list p { font-size: 15px; color: var(--gris); margin-top: 2px; }
+
+  /* --- portafolio: grid asimétrico --- */
+  .portfolio-grid { display:grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+  .port-card {
+    border: 1.5px solid var(--hairline); padding: 28px; position: relative;
+    transition: border-color .2s var(--ease);
+  }
+  .port-card:hover { border-color: var(--naranja); }
+  .port-card.featured { grid-row: span 2; border-color: var(--carbono); background: var(--carbono); color: var(--papel); }
+  .port-card .tag {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--naranja); margin-bottom: 12px;
+  }
+  .port-card h3 { font-family: var(--disp); font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
+  .port-card p { font-size: 15px; color: var(--gris); }
+  .port-card.featured p { color: hsl(40 20% 78%); }
+  .port-card .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 1px; color: var(--gris-claro); margin-top: 16px; }
+  .port-card.featured .meta { color: hsl(40 20% 68%); }
+
+  /* --- cursos: editorial --- */
+  .courses-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1.5px solid var(--carbono); }
+  .course {
+    padding: 32px 28px; border-right: 1px solid hsl(220 10% 30%);
+    border-bottom: 1px solid hsl(220 10% 30%); position: relative;
+    transition: background .2s var(--ease);
+  }
+  .course:hover { background: hsl(220 10% 11%); }
+  .course:last-child { border-right: none; }
+  .course .course-num {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--naranja);
+    margin-bottom: 10px;
+  }
+  .course h3 { font-family: var(--disp); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+  .course p { font-size: 14.5px; color: hsl(40 20% 78%); line-height: 1.5; }
+  .course .course-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 1px; color: var(--gris-claro); margin-top: 14px; }
+  .course .course-tag {
+    display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--naranja);
+    color: var(--naranja); margin-top: 10px;
+  }
+
+  /* --- planes: tabla spec --- */
+  .price-table { width:100%; border-collapse: collapse; }
+  .price-table th {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; text-align: left;
+    padding: 12px 10px; background: var(--carbono); color: var(--papel); border: 1.5px solid var(--carbono);
+  }
+  .price-table td { padding: 16px 10px; border: 1px solid var(--hairline); vertical-align: top; font-size: 15.5px; }
+  .price-table .plan-name { font-family: var(--disp); font-weight: 700; font-size: 26px; text-transform: uppercase; letter-spacing: .5px; }
+  .price-table .plan-price { font-family: var(--mono); font-size: 26px; font-variant-numeric: tabular-nums; color: var(--naranja); }
+  .price-table .plan-price small { display:block; font-size: 12px; color: var(--gris); letter-spacing: 1px; }
+  .price-table td ul { list-style:none; }
+  .price-table td li { padding: 3px 0; }
+  .price-table .featured { background: color-mix(in srgb, var(--papel-2) 70%, transparent); }
+  .price-note { margin-top: 18px; font-family: var(--mono); font-size: 12px; color: var(--gris); letter-spacing: .5px; }
+
+  /* --- proceso --- */
+  .steps { display:grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1.5px solid hsl(220 10% 30%); }
+  .step { padding: 26px 22px; border-right: 1px solid hsl(220 10% 30%); }
+  .step:last-child { border-right: none; }
+  .step .step-num { font-family: var(--disp); font-weight: 800; font-size: 44px; color: var(--naranja); line-height: 1; margin-bottom: 12px; }
+  .step h3 { font-family: var(--disp); font-weight: 600; font-size: 20px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+  .step p { font-size: 14.5px; color: hsl(40 20% 82%); }
+
+  /* --- cta final --- */
+  .cta-final { text-align:left; padding: 80px 0; }
+  .cta-final h2 { font-family: var(--disp); font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 6vw, 72px); line-height: .98; letter-spacing: 1px; max-width: 22ch; margin-bottom: 20px; }
+  .cta-final h2 em { font-style: normal; color: var(--naranja); }
+  .cta-final p { max-width: 46ch; margin-bottom: 32px; }
+
+  /* --- footer --- */
+  footer { border-top: 1.5px solid var(--carbono); padding: 36px 0; font-family: var(--mono); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--gris); }
+  .foot { display:flex; justify-content:space-between; gap: 20px; flex-wrap:wrap; }
+
+  /* --- motion --- */
+  .reveal { clip-path: inset(0 0 100% 0); animation: clipReveal .8s var(--ease) forwards; }
+  @keyframes clipReveal { to { clip-path: inset(0 0 0 0); } }
+  .slide-in { transform: translateX(40px); opacity: 0; animation: slideX .7s var(--ease) forwards; }
+  @keyframes slideX { to { transform: translateX(0); opacity: 1; } }
+  .rise { transform: translateY(16px); opacity: 0; animation: rise .6s var(--ease) forwards; }
+  @keyframes rise { to { transform: translateY(0); opacity: 1; } }
+  .d-1 { animation-delay: .08s; } .d-2 { animation-delay: .16s; } .d-3 { animation-delay: .24s; }
+  .d-4 { animation-delay: .32s; } .d-5 { animation-delay: .4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; transform:none !important; opacity:1 !important; clip-path:none !important; }
+    html { scroll-behavior:auto; }
+  }
+
+  /* --- responsive --- */
+  @media (max-width: 900px) {
+    .hero-grid, .svc-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding: 56px 0 48px; }
+    .steps, .courses-grid { grid-template-columns: 1fr 1fr; }
+    .step:nth-child(2), .course:nth-child(2) { border-right: none; }
+    .step:nth-child(-n+2), .course:nth-child(-n+2) { border-bottom: 1px solid hsl(220 10% 30%); }
+    .nav-links { display: none; }
+    .svc-right { border-left: none; padding-left: 0; border-top: 1.5px solid var(--hairline); padding-top: 32px; }
+    .port-card.featured { grid-row: auto; }
+  }
+  @media (max-width: 560px) {
+    .steps, .courses-grid { grid-template-columns: 1fr; }
+    .step, .course { border-right: none; border-bottom: 1px solid hsl(220 10% 30%); }
+    body { font-size: 16px; }
+    .svc-list li { grid-template-columns: 36px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="APARECÉ — inicio">
+      <svg viewBox="0 0 640 120" role="img" aria-label="APARECÉ">
+        <g transform="translate(8,8)">
+          <path d="M50 0 C22.4 0 0 22.4 0 50 C0 87.5 50 110 50 110 C50 110 100 87.5 100 50 C100 22.4 77.6 0 50 0 Z" fill="#FF5A1F"/>
+          <circle cx="50" cy="50" r="24" fill="#0B0F14"/>
+          <path d="M40 50 L47 57 L61 42" stroke="#F6F1E7" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="128" y="60" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="56" letter-spacing="1" fill="#0B0F14">APARECÉ<text x="128" y="84" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="5" fill="#FF5A1F">PRESENCIA DIGITAL · CR</text></text>
+      </svg>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#cursos">Cursos</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="#planes">Planes</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20APAREC%C3%89">Contactar →</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">
+          <span class="kicker-line"></span>
+          <span class="mono kicker-txt">WEB · CURSOS · COSTA RICA</span>
+        </div>
+        <h1 class="reveal">Si no <em>aparece</em> en Google, no existe.</h1>
+        <p class="lead rise d-1">Le hacemos su página web, le ponemos el dominio a su nombre y lo dejamos apareciendo cuando alguien busca su negocio. También enseñamos a programar — gratis.</p>
+        <div class="hero-ctas rise d-2">
+          <a class="btn" href="#servicios">Ver servicios →</a>
+          <a class="btn ghost" href="#cursos">Ver cursos</a>
+        </div>
+        <p class="hero-note rise d-3">Sin permanencia · Dominio a su nombre · Soporte en español</p>
+      </div>
+      <aside class="panel slide-in d-2" aria-label="Datos de APARECÉ">
+        <div class="panel-row">
+          <span>Negocios atendidos</span>
+          <span class="accent">12+</span>
+        </div>
+        <div class="panel-row">
+          <span>Demos construidas</span>
+          <span class="ok">8</span>
+        </div>
+        <div class="panel-row">
+          <span>Cursos publicados</span>
+          <span class="ok">1</span>
+        </div>
+        <div class="panel-row">
+          <span>Stack</span>
+          <span>HTML · CSS · JS</span>
+        </div>
+        <div class="panel-row">
+          <span>Ubicación</span>
+          <span>Cartago · CR</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="sec" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Servicios</h2>
+        <span class="mono">[ 01 ] · PRESENCIA DIGITAL PARA NEGOCIOS</span>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-left">
+          <h3>Su negocio apareciendo en Google</h3>
+          <p>No vendemos "diseño web". Vendemos que cuando alguien busque su negocio en Google, lo encuentre — con web, WhatsApp y reseñas. La competencia no.</p>
+          <p style="margin-top:16px;">Trabajamos con talleres mecánicos, restaurantes, sodas, pizzerías y cualquier PYME de Costa Rica que quiera aparecer donde lo buscan.</p>
+          <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" style="margin-top:24px;">Cotizar por WhatsApp →</a>
+        </div>
+        <div class="svc-right">
+          <ul class="svc-list">
+            <li>
+              <span class="num">[01]</span>
+              <div>
+                <h4>Página web profesional</h4>
+                <p>Hecha a mano, rápida, con botón de WhatsApp. No parece plantilla.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num">[02]</span>
+              <div>
+                <h4>Dominio .com a su nombre</h4>
+                <p>Usted es el dueño. Si mañana se va, se lleva todo.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num">[03]</span>
+              <div>
+                <h4>Ficha de Google verificada</h4>
+                <p>Con enlace a su web. Ahí es donde lo buscan.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num">[04]</span>
+              <div>
+                <h4>SEO local + reseñas</h4>
+                <p>Aparece en "cerca de mí". Tus reseñas de Google incrustadas.</p>
+              </div>
+            </li>
+            <li>
+              <span class="num">[05]</span>
+              <div>
+                <h4>Reporte mensual</h4>
+                <p>Cuánta gente lo visitó, quién le escribió, qué funciona.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTAFOLIO -->
+  <section class="sec tight" id="portafolio">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Portafolio</h2>
+        <span class="mono">[ 02 ] · DEMOS REALES CON DATOS REALES</span>
+      </div>
+      <div class="portfolio-grid">
+        <div class="port-card featured">
+          <div class="tag">Taller mecánico · San José</div>
+          <h3>Caso: Taller en San José</h3>
+          <p>Sin web, sin enlace en Google, con buenas reseñas. Le construimos una página con sus datos reales, botón de WhatsApp y ficha verificada. En 5 días hábiles.</p>
+          <div class="meta">DEMO LISTA · AGOSTO 2026</div>
+        </div>
+        <div class="port-card">
+          <div class="tag">Pupusería · Cartago</div>
+          <h3>Express La Tejita</h3>
+          <p>Soda con WhatsApp activo. Web con menú, ubicación y pedido directo.</p>
+          <div class="meta">DEPLOY · GITHUB PAGES</div>
+        </div>
+        <div class="port-card">
+          <div class="tag">Pizzería · El Tejar</div>
+          <h3>Juancho's Tejar</h3>
+          <p>Pizzería nocturna. Web con menú, galería y contacto directo.</p>
+          <div class="meta">DEPLOY · GITHUB PAGES</div>
+        </div>
+        <div class="port-card">
+          <div class="tag">Taller multimarca · SJ</div>
+          <h3>Servicios J.J.</h3>
+          <p>Ficha técnica con configurador de servicios y WhatsApp directo.</p>
+          <div class="meta">DEMO LISTA · SEPTIEMBRE 2026</div>
+        </div>
+        <div class="port-card">
+          <div class="tag">Restaurante · Sabana</div>
+          <h3>Furca</h3>
+          <p>Restaurante con web existente. Mejora de diseño y SEO local.</p>
+          <div class="meta">EN ESPERA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURSOS -->
+  <section class="sec dark" id="cursos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Cursos</h2>
+        <span class="mono">[ 03 ] · APRENDÉ A PROGRAMAR — GRATIS</span>
+      </div>
+      <p style="max-width:56ch; margin-bottom:36px; color:hsl(40 20% 78%); font-size:18px;">Cursos gratuitos, online y asincrónicos. Desde cero hasta proyectos reales. Sin registro, sin costo, sin fechas límite.</p>
+      <div class="courses-grid">
+        <a class="course" href="https://sotonavarrojosue-creator.github.io/portafolio/curso-python/" style="text-decoration:none; color:inherit;">
+          <div class="course-num">[01]</div>
+          <h3>Aprende Python desde cero</h3>
+          <p>19 lecciones interactivas: desde "Hola Mundo" hasta un Web Scraper completo. Proyectos prácticos en cada módulo.</p>
+          <div class="course-meta">19 LECCIONES · INTERACTIVO · PROYECTOS REALES</div>
+          <span class="course-tag">Publicado</span>
+        </a>
+        <div class="course">
+          <div class="course-num">[02]</div>
+          <h3>Git y GitHub</h3>
+          <p>Control de versiones, ramas, colaboración. Lo básico para trabajar en equipo y publicar código.</p>
+          <div class="course-meta">PRÓXIMAMENTE</div>
+          <span class="course-tag" style="border-color:var(--gris-claro); color:var(--gris-claro);">En desarrollo</span>
+        </div>
+        <div class="course">
+          <div class="course-num">[03]</div>
+          <h3>HTML y CSS desde cero</h3>
+          <p>Cómo construir páginas web limpias, responsive y accesibles. Sin frameworks, puro código.</p>
+          <div class="course-meta">PRÓXIMAMENTE</div>
+          <span class="course-tag" style="border-color:var(--gris-claro); color:var(--gris-claro);">En desarrollo</span>
+        </div>
+        <div class="course">
+          <div class="course-num">[04]</div>
+          <h3>JavaScript práctico</h3>
+          <p>Interactividad en la web. DOM, eventos, fetch API, y proyectos reales.</p>
+          <div class="course-meta">PRÓXIMAMENTE</div>
+          <span class="course-tag" style="border-color:var(--gris-claro); color:var(--gris-claro);">En desarrollo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANES -->
+  <section class="sec tight" id="planes">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Planes</h2>
+        <span class="mono">[ 04 ] · SIMPLE Y SIN PERMANENCIA</span>
+      </div>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th scope="col">Base</th>
+            <th scope="col">Estándar</th>
+            <th scope="col">Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="plan-name">Base</td>
+            <td class="plan-name">Estándar</td>
+            <td class="plan-name">Premium</td>
+          </tr>
+          <tr>
+            <td><span class="plan-price">$25<small>≈ ₡13.500 / mes</small></span></td>
+            <td><span class="plan-price">$45<small>≈ ₡24.300 / mes</small></span></td>
+            <td><span class="plan-price">$75<small>≈ ₡40.500 / mes</small></span></td>
+          </tr>
+          <tr>
+            <td>
+              <ul>
+                <li>✓ Web 1 página / 5 secciones</li>
+                <li>✓ Dominio .com a su nombre</li>
+                <li>✓ SSL + hosting</li>
+                <li>✓ Botón WhatsApp</li>
+                <li>✓ Google Business verificado</li>
+                <li>✓ 1 actualización / mes</li>
+                <li>✓ Reporte mensual</li>
+              </ul>
+            </td>
+            <td class="featured">
+              <ul>
+                <li>✓ Todo lo de Base</li>
+                <li>✓ Galería de fotos</li>
+                <li>✓ Mapa + reseñas Google</li>
+                <li>✓ SEO local</li>
+                <li>✓ 2 actualizaciones / mes</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>✓ Todo lo de Estándar</li>
+                <li>✓ Multi-página</li>
+                <li>✓ Agenda de turnos online</li>
+                <li>✓ 4 actualizaciones / mes</li>
+                <li>✓ Soporte prioritario</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="price-note">¿No le gusta el mensual? Prepago: $250 con dominio + hosting 1 año y 3 meses de soporte. El primer mes va incluido en el anticipo.</p>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="sec dark" id="proceso">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Proceso</h2>
+        <span class="mono">[ 05 ] · DE LA PRIMERA LLAMADA A LA PUBLICACIÓN</span>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Le mostramos un ejemplo</h3>
+          <p>Le preparamos una página de muestra con los datos de SU negocio. Gratis, sin compromiso.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Contrato y anticipo</h3>
+          <p>50% al empezar. Contrato simple, en español, con todo claro.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Publicamos su web</h3>
+          <p>Con sus fotos, sus precios y su horario. En menos de 5 días hábiles.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Actualizamos cada mes</h3>
+          <p>Cambios, reporte y soporte. Si quiere irse, se lleva el dominio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final wrap">
+    <h2>¿Listo para <em>aparecer?</em></h2>
+    <p>Escríbanos por WhatsApp. Le preparamos una página de ejemplo con los datos de su negocio — gratis y sin compromiso.</p>
+    <a class="btn btn-big" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio">Cotizar por WhatsApp →</a>
+    <p class="hero-note">Respuesta en menos de 24 h · Cartago y San José · Costa Rica</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>APARECÉ — Presencia Digital · CR</span>
+    <span>WhatsApp +506&nbsp;7216‑9369 · hola@aparece.cr</span>
+    <span>© 2026 · Hecho en Costa Rica</span>
+  </div>
+</footer>
+
+</body>
+</html>
