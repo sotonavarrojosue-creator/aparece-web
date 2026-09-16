@@ -81,8 +81,13 @@
   .btn-big { font-size: 15px; padding: 16px 30px; }
 
   /* --- hero --- */
-  .hero { padding: 88px 0 72px; }
-  .hero-grid { display:grid; grid-template-columns: 5fr 4fr; gap: 64px; align-items:center; }
+  .hero { padding: 88px 0 72px; position: relative; overflow: hidden; }
+  .hero-grid { display:grid; grid-template-columns: 5fr 4fr; gap: 64px; align-items:center; position: relative; z-index: 1; }
+  #dots-bg {
+    position: absolute; inset: -10%; width: 120%; height: 120%;
+    pointer-events: none; z-index: 0;
+  }
+  @media (pointer: coarse), (max-width: 700px) { #dots-bg { display: none; } }
   .kicker { display:flex; align-items:center; gap:12px; margin-bottom:22px; }
   .kicker-line { width:44px; height:2px; background: var(--naranja); }
   .kicker-txt { font-family: var(--mono); font-size: 13px; letter-spacing: 3px; }
@@ -114,7 +119,10 @@
 
   /* --- secciones --- */
   .sec { padding: 72px 0; }
-  .sec.dark { background: var(--carbono); color: var(--papel); }
+  .sec.dark { background: var(--carbono); color: var(--papel); position: relative; overflow: hidden; }
+  .sec.dark > .wrap { position: relative; z-index: 1; }
+  .dots-bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  @media (pointer: coarse) { .sec.dark .dots-bg { display: none; } }
   .sec-head { display:flex; align-items:baseline; gap: 22px; margin-bottom: 40px; }
   .sec-head h2 { font-family: var(--disp); font-weight: 700; text-transform: uppercase; font-size: clamp(34px, 4.5vw, 54px); line-height: 1; letter-spacing: 1px; }
   .sec-head .mono { font-size: 12.5px; letter-spacing: 2px; }
@@ -216,6 +224,18 @@
   .d-1 { animation-delay: .08s; } .d-2 { animation-delay: .16s; } .d-3 { animation-delay: .24s; }
   .d-4 { animation-delay: .32s; } .d-5 { animation-delay: .4s; }
 
+  /* --- scroll reveal (se activa al entrar en viewport) --- */
+  [data-reveal] {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity .7s var(--ease), transform .7s var(--ease);
+    transition-delay: var(--rd, 0s);
+  }
+  [data-reveal].is-in { opacity: 1; transform: translateY(0); }
+
+  /* header que se compacta al bajar */
+  header { transition: box-shadow .3s var(--ease); }
+  header.is-scrolled { box-shadow: 0 8px 24px -12px hsl(220 20% 10% / .25); }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; transform:none !important; opacity:1 !important; clip-path:none !important; }
     html { scroll-behavior:auto; }
@@ -270,6 +290,7 @@
 
   <!-- HERO -->
   <section class="hero wrap">
+    <canvas id="dots-bg" aria-hidden="true"></canvas>
     <div class="hero-grid">
       <div>
         <div class="kicker">
@@ -312,12 +333,12 @@
   <!-- SERVICIOS -->
   <section class="sec" id="servicios">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2>Servicios</h2>
         <span class="mono">[ 01 ] · PRESENCIA DIGITAL PARA NEGOCIOS</span>
       </div>
       <div class="svc-grid">
-        <div class="svc-left">
+        <div class="svc-left" data-reveal>
           <h3>Su negocio apareciendo en Google</h3>
           <p>No vendemos "diseño web". Vendemos que cuando alguien busque su negocio en Google, lo encuentre — con web, WhatsApp y reseñas. La competencia no.</p>
           <p style="margin-top:16px;">Trabajamos con talleres mecánicos, restaurantes, sodas, pizzerías y cualquier PYME de Costa Rica que quiera aparecer donde lo buscan.</p>
@@ -325,35 +346,35 @@
         </div>
         <div class="svc-right">
           <ul class="svc-list">
-            <li>
+            <li data-reveal style="--rd:.05s">
               <span class="num">[01]</span>
               <div>
                 <h4>Página web profesional</h4>
                 <p>Hecha a mano, rápida, con botón de WhatsApp. No parece plantilla.</p>
               </div>
             </li>
-            <li>
+            <li data-reveal style="--rd:.1s">
               <span class="num">[02]</span>
               <div>
                 <h4>Dominio .com a su nombre</h4>
                 <p>Usted es el dueño. Si mañana se va, se lleva todo.</p>
               </div>
             </li>
-            <li>
+            <li data-reveal style="--rd:.15s">
               <span class="num">[03]</span>
               <div>
                 <h4>Ficha de Google verificada</h4>
                 <p>Con enlace a su web. Ahí es donde lo buscan.</p>
               </div>
             </li>
-            <li>
+            <li data-reveal style="--rd:.2s">
               <span class="num">[04]</span>
               <div>
                 <h4>SEO local + reseñas</h4>
                 <p>Aparece en "cerca de mí". Tus reseñas de Google incrustadas.</p>
               </div>
             </li>
-            <li>
+            <li data-reveal style="--rd:.25s">
               <span class="num">[05]</span>
               <div>
                 <h4>Reporte mensual</h4>
@@ -369,36 +390,36 @@
   <!-- PORTAFOLIO -->
   <section class="sec tight" id="portafolio">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2>Portafolio</h2>
         <span class="mono">[ 02 ] · EJEMPLOS DE LO QUE HACEMOS</span>
       </div>
       <div class="portfolio-grid">
-        <div class="port-card featured">
+        <div class="port-card featured" data-reveal>
           <div class="tag">Taller mecánico · San José</div>
           <h3>Caso: Taller mecánico</h3>
           <p>Sin web, sin enlace en Google, con buenas reseñas. Le construimos una página con sus datos, botón de WhatsApp y ficha verificada. En 5 días hábiles.</p>
           <div class="meta">EJEMPLO · TIPO DE PROYECTO REAL</div>
         </div>
-        <div class="port-card">
+        <div class="port-card" data-reveal style="--rd:.08s">
           <div class="tag">Soda / pupusería</div>
           <h3>Caso: Soda local</h3>
           <p>Negocio con WhatsApp activo. Web con menú, ubicación y pedido directo.</p>
           <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
         </div>
-        <div class="port-card">
+        <div class="port-card" data-reveal style="--rd:.16s">
           <div class="tag">Pizzería</div>
           <h3>Caso: Pizzería de barrio</h3>
           <p>Negocio nocturno. Web con menú, galería y contacto directo.</p>
           <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
         </div>
-        <div class="port-card">
+        <div class="port-card" data-reveal style="--rd:.24s">
           <div class="tag">Taller multimarca</div>
           <h3>Caso: Taller multimarca</h3>
           <p>Ficha técnica con configurador de servicios y WhatsApp directo.</p>
           <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
         </div>
-        <div class="port-card">
+        <div class="port-card" data-reveal style="--rd:.32s">
           <div class="tag">Restaurante</div>
           <h3>Caso: Restaurante</h3>
           <p>Negocio con web existente. Mejora de diseño y SEO local.</p>
@@ -411,34 +432,34 @@
   <!-- CURSOS -->
   <section class="sec dark" id="cursos">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2>Cursos</h2>
         <span class="mono">[ 03 ] · APRENDÉ A PROGRAMAR — GRATIS</span>
       </div>
-      <p style="max-width:56ch; margin-bottom:36px; color:hsl(40 20% 78%); font-size:18px;">Cursos gratuitos, online y asincrónicos. Desde cero hasta proyectos reales. Sin registro, sin costo, sin fechas límite.</p>
+      <p style="max-width:56ch; margin-bottom:36px; color:hsl(40 20% 78%); font-size:18px;" data-reveal>Cursos gratuitos, online y asincrónicos. Desde cero hasta proyectos reales. Sin registro, sin costo, sin fechas límite.</p>
       <div class="courses-grid">
-        <a class="course" href="https://sotonavarrojosue-creator.github.io/demo-curso-python/" style="text-decoration:none; color:inherit;">
+        <a class="course" data-reveal style="--rd:.05s; text-decoration:none; color:inherit;" href="https://sotonavarrojosue-creator.github.io/demo-curso-python/">
           <div class="course-num">[01]</div>
           <h3>Aprende Python desde cero</h3>
           <p>19 lecciones interactivas: desde "Hola Mundo" hasta un Web Scraper completo. Proyectos prácticos en cada módulo.</p>
           <div class="course-meta">19 LECCIONES · INTERACTIVO · PROYECTOS REALES</div>
           <span class="course-tag">Publicado</span>
         </a>
-        <a class="course" href="https://sotonavarrojosue-creator.github.io/curso-git/" target="_blank" style="text-decoration:none; color:inherit;">
+        <a class="course" data-reveal style="--rd:.12s; text-decoration:none; color:inherit;" href="https://sotonavarrojosue-creator.github.io/curso-git/" target="_blank">
           <div class="course-num">[02]</div>
           <h3>Git y GitHub</h3>
           <p>Control de versiones, ramas, colaboración y trabajo en equipo. De "git init" a proyectos documentados con GitHub Actions.</p>
           <div class="course-meta">8 MÓDULOS · $15/MESS · INTERACTIVO</div>
           <span class="course-tag">Publicado</span>
         </a>
-        <a class="course" href="https://sotonavarrojosue-creator.github.io/curso-html/" target="_blank" style="text-decoration:none; color:inherit;">
+        <a class="course" data-reveal style="--rd:.19s; text-decoration:none; color:inherit;" href="https://sotonavarrojosue-creator.github.io/curso-html/" target="_blank">
           <div class="course-num">[03]</div>
           <h3>HTML y CSS desde cero</h3>
           <p>Estructura semántica, Flexbox, Grid, responsive design y formularios. De "&lt;!DOCTYPE html&gt;" a una landing page completa.</p>
           <div class="course-meta">10 MÓDULOS · $20/MESS · INTERACTIVO</div>
           <span class="course-tag">Publicado</span>
         </a>
-        <a class="course" href="https://sotonavarrojosue-creator.github.io/curso-js/" target="_blank" style="text-decoration:none; color:inherit;">
+        <a class="course" data-reveal style="--rd:.26s; text-decoration:none; color:inherit;" href="https://sotonavarrojosue-creator.github.io/curso-js/" target="_blank">
           <div class="course-num">[04]</div>
           <h3>JavaScript práctico</h3>
           <p>DOM, eventos, async/await, APIs REST y proyectos reales. Calculadora y gestor de tareas.</p>
@@ -452,11 +473,11 @@
   <!-- PLANES -->
   <section class="sec tight" id="planes">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2>Planes</h2>
         <span class="mono">[ 04 ] · SIMPLE Y SIN PERMANENCIA</span>
       </div>
-      <table class="price-table">
+      <table class="price-table" data-reveal style="--rd:.1s">
         <thead>
           <tr>
             <th scope="col">Base</th>
@@ -515,27 +536,27 @@
   <!-- PROCESO -->
   <section class="sec dark" id="proceso">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2>Proceso</h2>
         <span class="mono">[ 05 ] · DE LA PRIMERA LLAMADA A LA PUBLICACIÓN</span>
       </div>
       <div class="steps">
-        <div class="step">
+        <div class="step" data-reveal>
           <div class="step-num">01</div>
           <h3>Le mostramos un ejemplo</h3>
           <p>Le preparamos una página de muestra con los datos de SU negocio. Gratis, sin compromiso.</p>
         </div>
-        <div class="step">
+        <div class="step" data-reveal style="--rd:.1s">
           <div class="step-num">02</div>
           <h3>Contrato y anticipo</h3>
           <p>50% al empezar. Contrato simple, en español, con todo claro.</p>
         </div>
-        <div class="step">
+        <div class="step" data-reveal style="--rd:.2s">
           <div class="step-num">03</div>
           <h3>Publicamos su web</h3>
           <p>Con sus fotos, sus precios y su horario. En menos de 5 días hábiles.</p>
         </div>
-        <div class="step">
+        <div class="step" data-reveal style="--rd:.3s">
           <div class="step-num">04</div>
           <h3>Actualizamos cada mes</h3>
           <p>Cambios, reporte y soporte. Si quiere irse, se lleva el dominio.</p>
@@ -545,7 +566,7 @@
   </section>
 
   <!-- CTA FINAL -->
-  <section class="cta-final wrap">
+  <section class="cta-final wrap" data-reveal>
     <h2>¿Listo para <em>aparecer?</em></h2>
     <p>Escríbanos por WhatsApp. Le preparamos una página de ejemplo con los datos de su negocio — gratis y sin compromiso.</p>
     <a class="btn btn-big" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio">Cotizar por WhatsApp →</a>
@@ -561,6 +582,122 @@
     <span>© 2026 · Hecho en Costa Rica</span>
   </div>
 </footer>
+
+<script>
+  // Header se compacta al bajar
+  const header = document.querySelector('header');
+  addEventListener('scroll', () => {
+    header.classList.toggle('is-scrolled', scrollY > 8);
+  }, { passive: true });
+
+  // Revelado al hacer scroll (respeta prefers-reduced-motion vía CSS)
+  const revealables = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && revealables.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    revealables.forEach(el => io.observe(el));
+  } else {
+    revealables.forEach(el => el.classList.add('is-in'));
+  }
+
+  // Puntos de fondo que reaccionan al cursor (hero + bloques oscuros)
+  (function () {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarse = matchMedia('(pointer: coarse)').matches;
+    if (reduce || coarse) return;
+
+    function attachDots(canvas, container, opts) {
+      const ctx = canvas.getContext('2d');
+      const SPACING = opts.spacing || 42;
+      const RADIUS_REACT = 130;
+      const MAX_PUSH = 16;
+      const EASE = 0.12;
+
+      let w, h, dpr, dots = [];
+      let mouse = { x: -9999, y: -9999 };
+
+      function build() {
+        dpr = Math.min(devicePixelRatio || 1, 2);
+        w = canvas.clientWidth; h = canvas.clientHeight;
+        canvas.width = w * dpr; canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        dots = [];
+        const cols = Math.ceil(w / SPACING) + 1;
+        const rows = Math.ceil(h / SPACING) + 1;
+        for (let i = 0; i < cols; i++) {
+          for (let j = 0; j < rows; j++) {
+            const ox = i * SPACING, oy = j * SPACING;
+            dots.push({ ox, oy, x: ox, y: oy });
+          }
+        }
+      }
+
+      container.addEventListener('mousemove', (e) => {
+        const r = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - r.left;
+        mouse.y = e.clientY - r.top;
+      });
+      container.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+      function tick() {
+        ctx.clearRect(0, 0, w, h);
+        for (const d of dots) {
+          const dx = d.ox - mouse.x, dy = d.oy - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          let tx = d.ox, ty = d.oy, near = 0;
+          if (dist < RADIUS_REACT) {
+            near = 1 - dist / RADIUS_REACT;
+            const push = near * MAX_PUSH;
+            const ang = Math.atan2(dy, dx);
+            tx = d.ox + Math.cos(ang) * push;
+            ty = d.oy + Math.sin(ang) * push;
+          }
+          d.x += (tx - d.x) * EASE;
+          d.y += (ty - d.y) * EASE;
+
+          ctx.beginPath();
+          ctx.fillStyle = near > 0.05 ? opts.hoverColor : opts.baseColor;
+          ctx.globalAlpha = near > 0.05 ? opts.baseAlpha + near * 0.4 : opts.baseAlpha;
+          ctx.arc(d.x, d.y, near > 0.05 ? 1.6 + near * 1.4 : 1.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(tick);
+      }
+
+      let rt;
+      addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 150); });
+      build();
+      requestAnimationFrame(tick);
+    }
+
+    // Hero: fondo claro, puntos carbón que se iluminan de naranja
+    const heroCanvas = document.getElementById('dots-bg');
+    if (heroCanvas) {
+      attachDots(heroCanvas, heroCanvas.closest('.hero'), {
+        baseColor: 'hsl(220 12% 7%)', hoverColor: 'hsl(24 95% 52%)', baseAlpha: 0.10
+      });
+    }
+
+    // Bloques oscuros: fondo carbón, puntos claros que se iluminan de naranja
+    document.querySelectorAll('.sec.dark').forEach((section) => {
+      const c = document.createElement('canvas');
+      c.className = 'dots-bg';
+      c.setAttribute('aria-hidden', 'true');
+      section.insertBefore(c, section.firstChild);
+      attachDots(c, section, {
+        baseColor: 'hsl(40 20% 82%)', hoverColor: 'hsl(24 95% 58%)', baseAlpha: 0.16
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
