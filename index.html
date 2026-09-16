@@ -248,13 +248,19 @@
     .steps, .courses-grid { grid-template-columns: 1fr 1fr; }
     .step:nth-child(2), .course:nth-child(2) { border-right: none; }
     .step:nth-child(-n+2), .course:nth-child(-n+2) { border-bottom: 1px solid hsl(220 10% 30%); }
+    .course:nth-child(3) { border-right: 1px solid hsl(220 10% 30%); }
+    .course:nth-child(4) { border-right: none; }
+    .course:nth-child(-n+4):not(:nth-child(-n+2)) { border-bottom: 1px solid hsl(220 10% 30%); }
+    .course:nth-child(5) { border-right: 1px solid hsl(220 10% 30%); }
+    .course:nth-child(6) { border-right: none; }
     .nav-links { display: none; }
     .svc-right { border-left: none; padding-left: 0; border-top: 1.5px solid var(--hairline); padding-top: 32px; }
     .port-card.featured { grid-row: auto; }
   }
   @media (max-width: 560px) {
     .steps, .courses-grid { grid-template-columns: 1fr; }
-    .step, .course { border-right: none; border-bottom: 1px solid hsl(220 10% 30%); }
+    .step, .course { border-right: none !important; border-bottom: 1px solid hsl(220 10% 30%); }
+    .step:last-child, .course:last-child { border-bottom: none; }
     body { font-size: 16px; }
     .svc-list li { grid-template-columns: 36px 1fr; }
   }
@@ -316,15 +322,15 @@
         </div>
         <div class="panel-row">
           <span>Cursos publicados</span>
-          <span class="ok">4</span>
+          <span class="ok">7</span>
+        </div>
+        <div class="panel-row">
+          <span>Servicios</span>
+          <span class="ok">10</span>
         </div>
         <div class="panel-row">
           <span>Stack</span>
           <span>HTML · CSS · JS</span>
-        </div>
-        <div class="panel-row">
-          <span>Ubicación</span>
-          <span>Cartago · CR</span>
         </div>
       </aside>
     </div>
@@ -341,7 +347,7 @@
         <div class="svc-left" data-reveal>
           <h3>Su negocio apareciendo en Google</h3>
           <p>No vendemos "diseño web". Vendemos que cuando alguien busque su negocio en Google, lo encuentre — con web, WhatsApp y reseñas. La competencia no.</p>
-          <p style="margin-top:16px;">Trabajamos con talleres mecánicos, restaurantes, sodas, pizzerías y cualquier PYME de Costa Rica que quiera aparecer donde lo buscan.</p>
+          <p style="margin-top:16px;">Trabajamos con talleres mecánicos, restaurantes, sodas, pizzerías y cualquier PYME de Costa Rica que quiera aparecer donde lo buscan. Menús digitales, tiendas online, reservas y más.</p>
           <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" style="margin-top:24px;">Cotizar por WhatsApp →</a>
         </div>
         <div class="svc-right">
@@ -379,6 +385,41 @@
               <div>
                 <h4>Reporte mensual</h4>
                 <p>Cuánta gente lo visitó, quién le escribió, qué funciona.</p>
+              </div>
+            </li>
+            <li data-reveal style="--rd:.3s">
+              <span class="num">[06]</span>
+              <div>
+                <h4>Menú digital con QR</h4>
+                <p>Menú interactivo con fotos y precios. El cliente escanea y ordena. Incluye QR físico.</p>
+              </div>
+            </li>
+            <li data-reveal style="--rd:.35s">
+              <span class="num">[07]</span>
+              <div>
+                <h4>Landing page para eventos</h4>
+                <p>Web temporal para promos, aperturas y ferias. Alta en 24h, duración que usted decida.</p>
+              </div>
+            </li>
+            <li data-reveal style="--rd:.4s">
+              <span class="num">[08]</span>
+              <div>
+                <h4>Chatbot de WhatsApp</h4>
+                <p>Responde horarios, precios y ubicación automáticamente. Sin que usted esté pegado al cel.</p>
+              </div>
+            </li>
+            <li data-reveal style="--rd:.45s">
+              <span class="num">[09]</span>
+              <div>
+                <h4>Tienda online</h4>
+                <p>Catálogo de productos con carrito de compras y pago por SINPE o transferencia.</p>
+              </div>
+            </li>
+            <li data-reveal style="--rd:.5s">
+              <span class="num">[10]</span>
+              <div>
+                <h4>Sistema de reservas</h4>
+                <p>Agenda online para turnos y citas. Su cliente agenda solo, sin llamadas.</p>
               </div>
             </li>
           </ul>
@@ -466,6 +507,27 @@
           <div class="course-meta">15 MÓDULOS · 90 EJERCICIOS · GRATIS</div>
           <span class="course-tag">Publicado</span>
         </a>
+        <a class="course" data-reveal style="--rd:.33s; text-decoration:none; color:inherit; border-right:none;" href="#planes">
+          <div class="course-num">[05]</div>
+          <h3>WordPress desde cero</h3>
+          <p>Instalación, temas, plugins, SEO básico y seguridad. De "qué es WordPress" a su sitio publicado.</p>
+          <div class="course-meta">10 MÓDULOS · $10/MESS · INTERACTIVO</div>
+          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Próximamente</span>
+        </a>
+        <a class="course" data-reveal style="--rd:.4s; text-decoration:none; color:inherit; border-right:none;" href="#planes">
+          <div class="course-num">[06]</div>
+          <h3>Google Ads para negocios</h3>
+          <p>Campañas de búsqueda local, presupuesto, métricas y optimización. Atraer clientes que lo buscan ahora.</p>
+          <div class="course-meta">6 MÓDULOS · $15/MESS · INTERACTIVO</div>
+          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Próximamente</span>
+        </a>
+        <a class="course" data-reveal style="--rd:.47s; text-decoration:none; color:inherit; border-right:none; border-bottom:none;" href="#planes">
+          <div class="course-num">[07]</div>
+          <h3>WhatsApp Business completo</h3>
+          <p>Perfil profesional, catálogo, respuestas rápidas, etiquetas, broadcast y métricas de negocio.</p>
+          <div class="course-meta">5 MÓDULOS · $20/MESS · INTERACTIVO</div>
+          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Próximamente</span>
+        </a>
       </div>
     </div>
   </section>
@@ -514,6 +576,8 @@
                 <li>✓ Galería de fotos</li>
                 <li>✓ Mapa + reseñas Google</li>
                 <li>✓ SEO local</li>
+                <li>✓ Menú digital con QR</li>
+                <li>✓ Landing para eventos (1/año)</li>
                 <li>✓ 2 actualizaciones / mes</li>
               </ul>
             </td>
@@ -521,7 +585,9 @@
               <ul>
                 <li>✓ Todo lo de Estándar</li>
                 <li>✓ Multi-página</li>
-                <li>✓ Agenda de turnos online</li>
+                <li>✓ Chatbot WhatsApp</li>
+                <li>✓ Tienda online básica</li>
+                <li>✓ Sistema de reservas</li>
                 <li>✓ 4 actualizaciones / mes</li>
                 <li>✓ Soporte prioritario</li>
               </ul>
