@@ -127,19 +127,49 @@
   .sec-head h2 { font-family: var(--disp); font-weight: 700; text-transform: uppercase; font-size: clamp(34px, 4.5vw, 54px); line-height: 1; letter-spacing: 1px; }
   .sec-head .mono { font-size: 12.5px; letter-spacing: 2px; }
 
-  /* --- servicio: layout editorial --- */
-  .svc-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-  .svc-left h3 { font-family: var(--disp); font-weight: 700; font-size: 28px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
-  .svc-left p { color: var(--gris); max-width: 44ch; margin-bottom: 20px; }
-  .svc-right { border-left: 1.5px solid var(--hairline); padding-left: 40px; }
-  .svc-list { list-style:none; }
-  .svc-list li {
-    display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: baseline;
-    padding: 16px 0; border-bottom: 1px solid var(--hairline);
+  /* --- servicio: categorías --- */
+  .svc-intro { max-width: 52ch; margin-bottom: 48px; }
+  .svc-intro h3 { font-family: var(--disp); font-weight: 700; font-size: 28px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
+  .svc-intro p { color: var(--gris); max-width: 44ch; }
+  .svc-cat {
+    border: 1.5px solid var(--hairline); padding: 28px 28px 24px;
+    margin-bottom: 20px; position: relative;
+    transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
   }
-  .svc-list .num { font-family: var(--mono); font-size: 14px; letter-spacing: 2px; color: var(--naranja); }
-  .svc-list h4 { font-family: var(--disp); font-weight: 600; font-size: 20px; text-transform: uppercase; letter-spacing: .5px; }
-  .svc-list p { font-size: 15px; color: var(--gris); margin-top: 2px; }
+  .svc-cat:hover { border-color: var(--naranja); box-shadow: 0 8px 32px -8px hsl(24 95% 52% / .12); }
+  .svc-cat-head {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--hairline);
+  }
+  .svc-cat-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; border-radius: 2px;
+    background: var(--carbono); color: var(--naranja); flex-shrink: 0;
+  }
+  .svc-cat-head h4 {
+    font-family: var(--disp); font-weight: 700; font-size: 22px;
+    text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px;
+  }
+  .svc-cat-desc {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 1.5px;
+    color: var(--gris); text-transform: uppercase;
+  }
+  .svc-cat-items { display: grid; gap: 0; }
+  .svc-item {
+    display: grid; grid-template-columns: 36px 1fr; gap: 12px;
+    padding: 14px 0; border-bottom: 1px solid hsl(220 10% 92%);
+    align-items: baseline;
+  }
+  .svc-item:last-child { border-bottom: none; }
+  .svc-item-num {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 1px;
+    color: var(--naranja); font-weight: 500;
+  }
+  .svc-item h5 {
+    font-family: var(--disp); font-weight: 600; font-size: 17px;
+    text-transform: uppercase; letter-spacing: .3px; margin-bottom: 2px;
+  }
+  .svc-item p { font-size: 14px; color: var(--gris); line-height: 1.5; }
 
   /* --- portafolio: grid asimétrico --- */
   .portfolio-grid { display:grid; grid-template-columns: 2fr 1fr; gap: 24px; }
@@ -243,7 +273,7 @@
 
   /* --- responsive --- */
   @media (max-width: 900px) {
-    .hero-grid, .svc-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero { padding: 56px 0 48px; }
     .steps, .courses-grid { grid-template-columns: 1fr 1fr; }
     .step:nth-child(2), .course:nth-child(2) { border-right: none; }
@@ -254,7 +284,7 @@
     .course:nth-child(5) { border-right: 1px solid hsl(220 10% 30%); }
     .course:nth-child(6) { border-right: none; }
     .nav-links { display: none; }
-    .svc-right { border-left: none; padding-left: 0; border-top: 1.5px solid var(--hairline); padding-top: 32px; }
+    .portfolio-grid { grid-template-columns: 1fr; gap: 40px; }
     .port-card.featured { grid-row: auto; }
   }
   @media (max-width: 560px) {
@@ -343,88 +373,127 @@
         <h2>Servicios</h2>
         <span class="mono">[ 01 ] · PRESENCIA DIGITAL PARA NEGOCIOS</span>
       </div>
-      <div class="svc-grid">
-        <div class="svc-left" data-reveal>
-          <h3>Su negocio apareciendo en Google</h3>
-          <p>No vendemos "diseño web". Vendemos que cuando alguien busque su negocio en Google, lo encuentre — con web, WhatsApp y reseñas. La competencia no.</p>
-          <p style="margin-top:16px;">Trabajamos con talleres mecánicos, restaurantes, sodas, pizzerías y cualquier PYME de Costa Rica que quiera aparecer donde lo buscan. Menús digitales, tiendas online, reservas y más.</p>
-          <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" style="margin-top:24px;">Cotizar por WhatsApp →</a>
+      <div class="svc-intro" data-reveal>
+        <h3>Su negocio apareciendo en Google</h3>
+        <p>No vendemos "diseño web". Vendemos que cuando alguien busque su negocio en Google, lo encuentre — con web, WhatsApp y reseñas. La competencia no.</p>
+        <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" style="margin-top:24px;">Cotizar por WhatsApp →</a>
+      </div>
+
+      <!-- Categoría: Presencia -->
+      <div class="svc-cat" data-reveal style="--rd:.08s">
+        <div class="svc-cat-head">
+          <span class="svc-cat-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </span>
+          <div>
+            <h4>Presencia</h4>
+            <span class="svc-cat-desc">Que lo encuentren cuando lo buscan</span>
+          </div>
         </div>
-        <div class="svc-right">
-          <ul class="svc-list">
-            <li data-reveal style="--rd:.05s">
-              <span class="num">[01]</span>
-              <div>
-                <h4>Página web profesional</h4>
-                <p>Hecha a mano, rápida, con botón de WhatsApp. No parece plantilla.</p>
-              </div>
-            </li>
-            <li data-reveal style="--rd:.1s">
-              <span class="num">[02]</span>
-              <div>
-                <h4>Dominio .com a su nombre</h4>
-                <p>Usted es el dueño. Si mañana se va, se lleva todo.</p>
-              </div>
-            </li>
-            <li data-reveal style="--rd:.15s">
-              <span class="num">[03]</span>
-              <div>
-                <h4>Ficha de Google verificada</h4>
-                <p>Con enlace a su web. Ahí es donde lo buscan.</p>
-              </div>
-            </li>
-            <li data-reveal style="--rd:.2s">
-              <span class="num">[04]</span>
-              <div>
-                <h4>SEO local + reseñas</h4>
-                <p>Aparece en "cerca de mí". Tus reseñas de Google incrustadas.</p>
-              </div>
-            </li>
-            <li data-reveal style="--rd:.25s">
-              <span class="num">[05]</span>
-              <div>
-                <h4>Reporte mensual</h4>
-                <p>Cuánta gente lo visitó, quién le escribió, qué funciona.</p>
-              </div>
-            </li>
-            <li data-reveal style="--rd:.3s">
-              <span class="num">[06]</span>
-              <div>
-                <h4>Menú digital con QR</h4>
-                <p>Menú interactivo con fotos y precios. El cliente escanea y ordena. Incluye QR físico.</p>
-              </div>
-            </li>
-            <li data-reveal style="--rd:.35s">
-              <span class="num">[07]</span>
-              <div>
-                <h4>Landing page para eventos</h4>
-                <p>Web temporal para promos, aperturas y ferias. Alta en 24h, duración que usted decida.</p>
-              </div>
-            </li>
-            <li data-reveal style="--rd:.4s">
-              <span class="num">[08]</span>
-              <div>
-                <h4>Chatbot de WhatsApp</h4>
-                <p>Responde horarios, precios y ubicación automáticamente. Sin que usted esté pegado al cel.</p>
-              </div>
-            </li>
-            <li data-reveal style="--rd:.45s">
-              <span class="num">[09]</span>
-              <div>
-                <h4>Tienda online</h4>
-                <p>Catálogo de productos con carrito de compras y pago por SINPE o transferencia.</p>
-              </div>
-            </li>
-            <li data-reveal style="--rd:.5s">
-              <span class="num">[10]</span>
-              <div>
-                <h4>Sistema de reservas</h4>
-                <p>Agenda online para turnos y citas. Su cliente agenda solo, sin llamadas.</p>
-              </div>
-            </li>
-          </ul>
+        <div class="svc-cat-items">
+          <div class="svc-item">
+            <span class="svc-item-num">01</span>
+            <div>
+              <h5>Página web profesional</h5>
+              <p>Hecha a mano, rápida, con botón de WhatsApp. No parece plantilla.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-num">02</span>
+            <div>
+              <h5>Dominio .com a su nombre</h5>
+              <p>Usted es el dueño. Si mañana se va, se lleva todo.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-num">03</span>
+            <div>
+              <h5>Ficha de Google verificada</h5>
+              <p>Con enlace a su web. Ahí es donde lo buscan.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-num">04</span>
+            <div>
+              <h5>SEO local + reseñas</h5>
+              <p>Aparece en "cerca de mí". Tus reseñas de Google incrustadas.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-num">05</span>
+            <div>
+              <h5>Reporte mensual</h5>
+              <p>Cuánta gente lo visitó, quién le escribió, qué funciona.</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Categoría: Digital -->
+      <div class="svc-cat" data-reveal style="--rd:.16s">
+        <div class="svc-cat-head">
+          <span class="svc-cat-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </span>
+          <div>
+            <h4>Digital</h4>
+            <span class="svc-cat-desc">Herramientas que trabajan solas</span>
+          </div>
+        </div>
+        <div class="svc-cat-items">
+          <div class="svc-item">
+            <span class="svc-item-num">06</span>
+            <div>
+              <h5>Menú digital con QR</h5>
+              <p>Menú interactivo con fotos y precios. El cliente escanea y ordena. Incluye QR físico.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-num">07</span>
+            <div>
+              <h5>Landing para eventos</h5>
+              <p>Web temporal para promos, aperturas y ferias. Alta en 24h, duración que usted decida.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-num">08</span>
+            <div>
+              <h5>Chatbot de WhatsApp</h5>
+              <p>Responde horarios, precios y ubicación automáticamente. Sin que usted esté pegado al cel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categoría: Ventas -->
+      <div class="svc-cat" data-reveal style="--rd:.24s">
+        <div class="svc-cat-head">
+          <span class="svc-cat-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </span>
+          <div>
+            <h4>Ventas</h4>
+            <span class="svc-cat-desc">Vender y agendar sin fricción</span>
+          </div>
+        </div>
+        <div class="svc-cat-items">
+          <div class="svc-item">
+            <span class="svc-item-num">09</span>
+            <div>
+              <h5>Tienda online</h5>
+              <p>Catálogo de productos con carrito de compras y pago por SINPE o transferencia.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-num">10</span>
+            <div>
+              <h5>Sistema de reservas</h5>
+              <p>Agenda online para turnos y citas. Su cliente agenda solo, sin llamadas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
