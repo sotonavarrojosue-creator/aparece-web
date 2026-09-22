@@ -1,838 +1,595 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APARECÉ — Presencia Digital y Cursos · Costa Rica</title>
-<meta name="description" content="Páginas web para negocios de Costa Rica y cursos gratuitos de programación. Si no aparece en Google, no existe.">
-<meta name="theme-color" content="#F6F1E7">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 2 C14.3 2 0 16.3 0 32 C0 56 32 62 32 62 C32 62 64 56 64 32 C64 16.3 49.7 2 32 2 Z' fill='%23FF5A1F'/%3E%3Ccircle cx='32' cy='32' r='16' fill='%230B0F14'/%3E%3Cpath d='M25 32 L30 37 L39 27' stroke='%23F6F1E7' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --carbono:  hsl(220 12% 7%);
-    --carbono-2: hsl(220 10% 13%);
-    --carbono-3: hsl(220 10% 18%);
-    --papel:    hsl(40 33% 96%);
-    --papel-2:  hsl(40 26% 90%);
-    --naranja:  hsl(24 95% 52%);
-    --naranja-osc: hsl(24 90% 42%);
-    --gris:     hsl(220 8% 38%);
-    --gris-claro: hsl(220 8% 60%);
-    --hairline: hsl(220 10% 82%);
-    --verde:    hsl(140 45% 48%);
-    --disp: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-    --body: 'Barlow', 'Helvetica Neue', sans-serif;
-    --mono: 'IBM Plex Mono', 'Courier New', monospace;
-    --r-btn: 2px;
-    --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body {
-    font-family: var(--body);
-    background: var(--papel);
-    color: var(--carbono);
-    font-size: 17px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  ::selection { background: var(--naranja); color: var(--papel); }
-  :focus-visible { outline: 3px solid var(--naranja); outline-offset: 2px; }
-  img { max-width:100%; display:block; }
-  a { color: inherit; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APARECÉ — Presencia Digital y Cursos · Costa Rica</title>
 
-  /* --- utilidades --- */
-  .wrap { max-width: 1160px; margin-inline: auto; padding-inline: 24px; }
-  .mono { font-family: var(--mono); }
-  .disp { font-family: var(--disp); }
-  .idx { font-family: var(--mono); font-size: 13px; letter-spacing: 2px; color: var(--naranja); }
-  .lbl { font-family: var(--mono); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); }
+  <!-- SEO -->
+  <meta name="description" content="Páginas web para negocios de Costa Rica y cursos gratuitos de programación. Si no aparece en Google, no existe.">
+  <meta name="theme-color" content="#F6F1E7">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aparece.cr">
 
-  /* --- header --- */
-  header {
-    position: sticky; top: 0; z-index: 50;
-    background: color-mix(in srgb, var(--papel) 88%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--hairline);
-  }
-  .nav { display:flex; align-items:center; justify-content:space-between; gap:24px; padding-block:14px; }
-  .brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
-  .brand svg { height:34px; }
-  .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
-  .nav-links a {
-    font-family: var(--mono); font-size: 12.5px; letter-spacing: 1.5px; text-transform: uppercase;
-    text-decoration:none; color: var(--carbono); position:relative;
-  }
-  .nav-links a::after { content:''; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--naranja); transition: width .2s var(--ease); }
-  .nav-links a:hover::after { width:100%; }
-  .btn {
-    display:inline-flex; align-items:center; gap:8px;
-    font-family: var(--mono); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
-    text-decoration:none; padding: 12px 22px; border-radius: var(--r-btn);
-    border: 1.5px solid var(--carbono); background: var(--carbono); color: var(--papel);
-    transition: background .18s var(--ease), color .18s var(--ease), transform .18s var(--ease);
-  }
-  .btn:hover { background: var(--naranja); border-color: var(--naranja); transform: translateY(-2px); }
-  .btn.ghost { background: transparent; color: var(--carbono); }
-  .btn.ghost:hover { background: var(--carbono); color: var(--papel); border-color: var(--carbono); }
-  .btn-big { font-size: 15px; padding: 16px 30px; }
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="APARECÉ — Presencia Digital y Cursos · Costa Rica">
+  <meta property="og:description" content="Páginas web para negocios de Costa Rica y cursos gratuitos de programación. Si no aparece en Google, no existe.">
+  <meta property="og:url" content="https://aparece.cr">
+  <meta property="og:image" content="https://aparece.cr/img/og-image.png">
+  <meta property="og:locale" content="es_CR">
+  <meta property="og:site_name" content="APARECÉ">
 
-  /* --- hero --- */
-  .hero { padding: 88px 0 72px; position: relative; overflow: hidden; }
-  .hero-grid { display:grid; grid-template-columns: 5fr 4fr; gap: 64px; align-items:center; position: relative; z-index: 1; }
-  #dots-bg {
-    position: absolute; inset: -10%; width: 120%; height: 120%;
-    pointer-events: none; z-index: 0;
-  }
-  @media (pointer: coarse), (max-width: 700px) { #dots-bg { display: none; } }
-  .kicker { display:flex; align-items:center; gap:12px; margin-bottom:22px; }
-  .kicker-line { width:44px; height:2px; background: var(--naranja); }
-  .kicker-txt { font-family: var(--mono); font-size: 13px; letter-spacing: 3px; }
-  .hero h1 {
-    font-family: var(--disp); font-weight: 800; text-transform: uppercase;
-    font-size: clamp(52px, 7vw, 88px); line-height: 0.95; letter-spacing: 1px;
-    text-wrap: balance; margin-bottom: 24px;
-  }
-  .hero h1 em { font-style: normal; color: var(--naranja); }
-  .hero p.lead { font-size: 19px; max-width: 46ch; color: var(--carbono-2); margin-bottom: 34px; }
-  .hero-ctas { display:flex; gap:16px; flex-wrap:wrap; }
-  .hero-note { margin-top: 20px; font-family: var(--mono); font-size: 12px; color: var(--gris); letter-spacing: .5px; }
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@aparece_cr">
+  <meta name="twitter:creator" content="@aparece_cr">
+  <meta name="twitter:title" content="APARECÉ — Presencia Digital y Cursos · Costa Rica">
+  <meta name="twitter:description" content="Páginas web para negocios de Costa Rica y cursos gratuitos de programación.">
+  <meta name="twitter:image" content="https://aparece.cr/img/og-image.png">
 
-  /* --- panel de stats --- */
-  .panel {
-    border: 1.5px solid var(--carbono); background: var(--carbono); color: var(--papel);
-    padding: 28px 26px; position: relative;
-  }
-  .panel::before {
-    content: 'APARECÉ · STATS'; position:absolute; top:-11px; left:18px;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--carbono);
-    background: var(--naranja); padding: 2px 10px;
-  }
-  .panel-row { display:flex; justify-content:space-between; align-items:baseline; padding: 14px 0; border-top: 1px solid hsl(220 10% 30%); }
-  .panel-row span:first-child { font-family: var(--mono); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: hsl(40 20% 78%); }
-  .panel-row span:last-child { font-family: var(--disp); font-weight: 700; font-size: 22px; letter-spacing: .5px; }
-  .panel-row .ok { color: hsl(140 50% 55%); }
-  .panel-row .accent { color: var(--naranja); }
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 2 C14.3 2 0 16.3 0 32 C0 56 32 62 32 62 C32 62 64 56 64 32 C64 16.3 49.7 2 32 2 Z' fill='%23FF5A1F'/%3E%3Ccircle cx='32' cy='32' r='16' fill='%230B0F14'/%3E%3Cpath d='M25 32 L30 37 L39 27' stroke='%23F6F1E7' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
-  /* --- secciones --- */
-  .sec { padding: 72px 0; }
-  .sec.dark { background: var(--carbono); color: var(--papel); position: relative; overflow: hidden; }
-  .sec.dark > .wrap { position: relative; z-index: 1; }
-  .dots-bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-  @media (pointer: coarse) { .sec.dark .dots-bg { display: none; } }
-  .sec-head { display:flex; align-items:baseline; gap: 22px; margin-bottom: 40px; }
-  .sec-head h2 { font-family: var(--disp); font-weight: 700; text-transform: uppercase; font-size: clamp(34px, 4.5vw, 54px); line-height: 1; letter-spacing: 1px; }
-  .sec-head .mono { font-size: 12.5px; letter-spacing: 2px; }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
-  /* --- servicio: categorías --- */
-  .svc-intro { max-width: 52ch; margin-bottom: 48px; }
-  .svc-intro h3 { font-family: var(--disp); font-weight: 700; font-size: 28px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
-  .svc-intro p { color: var(--gris); max-width: 44ch; }
-  .svc-cat {
-    border: 1.5px solid var(--hairline); padding: 28px 28px 24px;
-    margin-bottom: 20px; position: relative;
-    transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
-  }
-  .svc-cat:hover { border-color: var(--naranja); box-shadow: 0 8px 32px -8px hsl(24 95% 52% / .12); }
-  .svc-cat-head {
-    display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
-    padding-bottom: 16px; border-bottom: 1px solid var(--hairline);
-  }
-  .svc-cat-icon {
-    display: flex; align-items: center; justify-content: center;
-    width: 48px; height: 48px; border-radius: 2px;
-    background: var(--carbono); color: var(--naranja); flex-shrink: 0;
-  }
-  .svc-cat-head h4 {
-    font-family: var(--disp); font-weight: 700; font-size: 22px;
-    text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px;
-  }
-  .svc-cat-desc {
-    font-family: var(--mono); font-size: 12px; letter-spacing: 1.5px;
-    color: var(--gris); text-transform: uppercase;
-  }
-  .svc-cat-items { display: grid; gap: 0; }
-  .svc-item {
-    display: grid; grid-template-columns: 36px 1fr; gap: 12px;
-    padding: 14px 0; border-bottom: 1px solid hsl(220 10% 92%);
-    align-items: baseline;
-  }
-  .svc-item:last-child { border-bottom: none; }
-  .svc-item-num {
-    font-family: var(--mono); font-size: 13px; letter-spacing: 1px;
-    color: var(--naranja); font-weight: 500;
-  }
-  .svc-item h5 {
-    font-family: var(--disp); font-weight: 600; font-size: 17px;
-    text-transform: uppercase; letter-spacing: .3px; margin-bottom: 2px;
-  }
-  .svc-item p { font-size: 14px; color: var(--gris); line-height: 1.5; }
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
-  /* --- portafolio: grid asimétrico --- */
-  .portfolio-grid { display:grid; grid-template-columns: 2fr 1fr; gap: 24px; }
-  .port-card {
-    border: 1.5px solid var(--hairline); padding: 28px; position: relative;
-    transition: border-color .2s var(--ease);
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "APARECÉ",
+    "description": "Presencia digital para negocios de Costa Rica — páginas web, dominios, Google Business y cursos gratuitos de programación.",
+    "url": "https://aparece.cr",
+    "telephone": "+50672169369",
+    "email": "aparece.cr@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cartago",
+      "addressRegion": "Cartago",
+      "addressCountry": "CR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.8642,
+      "longitude": -83.9187
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Costa Rica"
+    },
+    "priceRange": "$25-$75",
+    "openingHours": "Mo-Su 08:00-20:00",
+    "sameAs": [
+      "https://www.instagram.com/aparece_cr"
+    ]
   }
-  .port-card:hover { border-color: var(--naranja); }
-  .port-card.featured { grid-row: span 2; border-color: var(--carbono); background: var(--carbono); color: var(--papel); }
-  .port-card .tag {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--naranja); margin-bottom: 12px;
-  }
-  .port-card h3 { font-family: var(--disp); font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
-  .port-card p { font-size: 15px; color: var(--gris); }
-  .port-card.featured p { color: hsl(40 20% 78%); }
-  .port-card .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 1px; color: var(--gris-claro); margin-top: 16px; }
-  .port-card.featured .meta { color: hsl(40 20% 68%); }
-
-  /* --- cursos: editorial --- */
-  .courses-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1.5px solid var(--carbono); }
-  .course {
-    padding: 32px 28px; border-right: 1px solid hsl(220 10% 30%);
-    border-bottom: 1px solid hsl(220 10% 30%); position: relative;
-    transition: background .2s var(--ease);
-  }
-  .course:hover { background: hsl(220 10% 11%); }
-  .course:last-child { border-right: none; }
-  .course .course-num {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--naranja);
-    margin-bottom: 10px;
-  }
-  .course h3 { font-family: var(--disp); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
-  .course p { font-size: 14.5px; color: hsl(40 20% 78%); line-height: 1.5; }
-  .course .course-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 1px; color: var(--gris-claro); margin-top: 14px; }
-  .course .course-tag {
-    display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px;
-    text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--naranja);
-    color: var(--naranja); margin-top: 10px;
-  }
-
-  /* --- planes: tabla spec --- */
-  .price-table { width:100%; border-collapse: collapse; }
-  .price-table th {
-    font-family: var(--mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; text-align: left;
-    padding: 12px 10px; background: var(--carbono); color: var(--papel); border: 1.5px solid var(--carbono);
-  }
-  .price-table td { padding: 16px 10px; border: 1px solid var(--hairline); vertical-align: top; font-size: 15.5px; }
-  .price-table .plan-name { font-family: var(--disp); font-weight: 700; font-size: 26px; text-transform: uppercase; letter-spacing: .5px; }
-  .price-table .plan-price { font-family: var(--mono); font-size: 26px; font-variant-numeric: tabular-nums; color: var(--naranja); }
-  .price-table .plan-price small { display:block; font-size: 12px; color: var(--gris); letter-spacing: 1px; }
-  .price-table td ul { list-style:none; }
-  .price-table td li { padding: 3px 0; }
-  .price-table .featured { background: color-mix(in srgb, var(--papel-2) 70%, transparent); }
-  .price-note { margin-top: 18px; font-family: var(--mono); font-size: 12px; color: var(--gris); letter-spacing: .5px; }
-
-  /* --- proceso --- */
-  .steps { display:grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1.5px solid hsl(220 10% 30%); }
-  .step { padding: 26px 22px; border-right: 1px solid hsl(220 10% 30%); }
-  .step:last-child { border-right: none; }
-  .step .step-num { font-family: var(--disp); font-weight: 800; font-size: 44px; color: var(--naranja); line-height: 1; margin-bottom: 12px; }
-  .step h3 { font-family: var(--disp); font-weight: 600; font-size: 20px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
-  .step p { font-size: 14.5px; color: hsl(40 20% 82%); }
-
-  /* --- cta final --- */
-  .cta-final { text-align:left; padding: 80px 0; }
-  .cta-final h2 { font-family: var(--disp); font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 6vw, 72px); line-height: .98; letter-spacing: 1px; max-width: 22ch; margin-bottom: 20px; }
-  .cta-final h2 em { font-style: normal; color: var(--naranja); }
-  .cta-final p { max-width: 46ch; margin-bottom: 32px; }
-
-  /* --- footer --- */
-  footer { border-top: 1.5px solid var(--carbono); padding: 36px 0; font-family: var(--mono); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--gris); }
-  .foot { display:flex; justify-content:space-between; gap: 20px; flex-wrap:wrap; }
-
-  /* --- motion --- */
-  .reveal { clip-path: inset(0 0 100% 0); animation: clipReveal .8s var(--ease) forwards; }
-  @keyframes clipReveal { to { clip-path: inset(0 0 0 0); } }
-  .slide-in { transform: translateX(40px); opacity: 0; animation: slideX .7s var(--ease) forwards; }
-  @keyframes slideX { to { transform: translateX(0); opacity: 1; } }
-  .rise { transform: translateY(16px); opacity: 0; animation: rise .6s var(--ease) forwards; }
-  @keyframes rise { to { transform: translateY(0); opacity: 1; } }
-  .d-1 { animation-delay: .08s; } .d-2 { animation-delay: .16s; } .d-3 { animation-delay: .24s; }
-  .d-4 { animation-delay: .32s; } .d-5 { animation-delay: .4s; }
-
-  /* --- scroll reveal (se activa al entrar en viewport) --- */
-  [data-reveal] {
-    opacity: 0; transform: translateY(22px);
-    transition: opacity .7s var(--ease), transform .7s var(--ease);
-    transition-delay: var(--rd, 0s);
-  }
-  [data-reveal].is-in { opacity: 1; transform: translateY(0); }
-
-  /* header que se compacta al bajar */
-  header { transition: box-shadow .3s var(--ease); }
-  header.is-scrolled { box-shadow: 0 8px 24px -12px hsl(220 20% 10% / .25); }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition: none !important; transform:none !important; opacity:1 !important; clip-path:none !important; }
-    html { scroll-behavior:auto; }
-  }
-
-  /* --- responsive --- */
-  @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero { padding: 56px 0 48px; }
-    .steps, .courses-grid { grid-template-columns: 1fr 1fr; }
-    .step:nth-child(2), .course:nth-child(2) { border-right: none; }
-    .step:nth-child(-n+2), .course:nth-child(-n+2) { border-bottom: 1px solid hsl(220 10% 30%); }
-    .course:nth-child(3) { border-right: 1px solid hsl(220 10% 30%); }
-    .course:nth-child(4) { border-right: none; }
-    .course:nth-child(-n+4):not(:nth-child(-n+2)) { border-bottom: 1px solid hsl(220 10% 30%); }
-    .course:nth-child(5) { border-right: 1px solid hsl(220 10% 30%); }
-    .course:nth-child(6) { border-right: none; }
-    .nav-links { display: none; }
-    .portfolio-grid { grid-template-columns: 1fr; gap: 40px; }
-    .port-card.featured { grid-row: auto; }
-  }
-  @media (max-width: 560px) {
-    .steps, .courses-grid { grid-template-columns: 1fr; }
-    .step, .course { border-right: none !important; border-bottom: 1px solid hsl(220 10% 30%); }
-    .step:last-child, .course:last-child { border-bottom: none; }
-    body { font-size: 16px; }
-    .svc-list li { grid-template-columns: 36px 1fr; }
-  }
-</style>
+  </script>
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="APARECÉ — inicio">
-      <svg viewBox="0 0 640 120" role="img" aria-label="APARECÉ">
-        <g transform="translate(8,8)">
-          <path d="M50 0 C22.4 0 0 22.4 0 50 C0 87.5 50 110 50 110 C50 110 100 87.5 100 50 C100 22.4 77.6 0 50 0 Z" fill="#FF5A1F"/>
-          <circle cx="50" cy="50" r="24" fill="#0B0F14"/>
-          <path d="M40 50 L47 57 L61 42" stroke="#F6F1E7" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-        <text x="128" y="60" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="56" letter-spacing="1" fill="#0B0F14">APARECÉ<text x="128" y="84" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="5" fill="#FF5A1F">PRESENCIA DIGITAL · CR</text></text>
-      </svg>
-    </a>
-    <nav aria-label="Principal">
-      <ul class="nav-links">
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#cursos">Cursos</a></li>
-        <li><a href="#portafolio">Portafolio</a></li>
-        <li><a href="#planes">Planes</a></li>
-      </ul>
-    </nav>
-    <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20APAREC%C3%89">Contactar →</a>
+  <!-- Skip to content (accesibilidad) -->
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+    <p>Este sitio utiliza cookies esenciales para funcionar. Para más información, consulte nuestra <a href="pages/cookie-policy.html">Política de Cookies</a>.</p>
+    <div class="cookie-actions">
+      <button class="cookie-btn reject" id="cookie-reject">Rechazar</button>
+      <button class="cookie-btn accept" id="cookie-accept">Aceptar</button>
+    </div>
   </div>
-</header>
 
-<main id="top">
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="APARECÉ — inicio">
+        <svg viewBox="0 0 640 120" role="img" aria-label="APARECÉ">
+          <g transform="translate(8,8)">
+            <path d="M50 0 C22.4 0 0 22.4 0 50 C0 87.5 50 110 50 110 C50 110 100 87.5 100 50 C100 22.4 77.6 0 50 0 Z" fill="#FF5A1F"/>
+            <circle cx="50" cy="50" r="24" fill="#0B0F14"/>
+            <path d="M40 50 L47 57 L61 42" stroke="#F6F1E7" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <text x="128" y="60" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-weight="800" font-size="56" letter-spacing="1" fill="#0B0F14">APARECÉ<text x="128" y="84" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="5" fill="#FF5A1F">PRESENCIA DIGITAL · CR</text></text>
+        </svg>
+      </a>
 
-  <!-- HERO -->
-  <section class="hero wrap">
-    <canvas id="dots-bg" aria-hidden="true"></canvas>
-    <div class="hero-grid">
+      <!-- Hamburger (móvil) -->
+      <button class="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav aria-label="Principal">
+        <ul class="nav-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#cursos">Cursos</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#planes">Planes</a></li>
+        </ul>
+      </nav>
+      <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20APAREC%C3%89">Contactar →</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero wrap">
+      <canvas id="dots-bg" aria-hidden="true"></canvas>
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">
+            <span class="kicker-line"></span>
+            <span class="mono kicker-txt">WEB · CURSOS · COSTA RICA</span>
+          </div>
+          <h1 class="reveal">Si no <em>aparece</em> en Google, no existe.</h1>
+          <p class="lead rise d-1">Le hacemos su página web, le ponemos el dominio a su nombre y lo dejamos apareciendo cuando alguien busca su negocio. También enseñamos a programar — gratis.</p>
+          <div class="hero-ctas rise d-2">
+            <a class="btn" href="#servicios">Ver servicios →</a>
+            <a class="btn ghost" href="#cursos">Ver cursos</a>
+          </div>
+          <p class="hero-note rise d-3">Sin permanencia · Dominio a su nombre · Soporte en español</p>
+        </div>
+        <aside class="panel slide-in d-2" aria-label="Datos de APARECÉ">
+          <div class="panel-row">
+            <span>Servicios disponibles</span>
+            <span class="accent">10</span>
+          </div>
+          <div class="panel-row">
+            <span>Cursos en desarrollo</span>
+            <span class="ok">7</span>
+          </div>
+          <div class="panel-row">
+            <span>Planes</span>
+            <span class="ok">3</span>
+          </div>
+          <div class="panel-row">
+            <span>Soporte</span>
+            <span>En español</span>
+          </div>
+          <div class="panel-row">
+            <span>Stack</span>
+            <span>HTML · CSS · JS</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICIOS
+         ============================================================ -->
+    <section class="sec" id="servicios">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <h2>Servicios</h2>
+          <span class="mono">[ 01 ] · PRESENCIA DIGITAL PARA NEGOCIOS</span>
+        </div>
+        <div class="svc-intro" data-reveal>
+          <h3>Su negocio apareciendo en Google</h3>
+          <p>No vendemos "diseño web". Vendemos que cuando alguien busque su negocio en Google, lo encuentre — con web, WhatsApp y reseñas. La competencia no.</p>
+          <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" style="margin-top:24px;">Cotizar por WhatsApp →</a>
+        </div>
+
+        <!-- Categoría: Presencia -->
+        <div class="svc-cat" data-reveal style="--rd:.08s">
+          <div class="svc-cat-head">
+            <span class="svc-cat-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </span>
+            <div>
+              <h4>Presencia</h4>
+              <span class="svc-cat-desc">Que lo encuentren cuando lo buscan</span>
+            </div>
+          </div>
+          <div class="svc-cat-items">
+            <div class="svc-item">
+              <span class="svc-item-num">01</span>
+              <div>
+                <h5>Página web profesional</h5>
+                <p>Hecha a mano, rápida, con botón de WhatsApp. No parece plantilla.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <span class="svc-item-num">02</span>
+              <div>
+                <h5>Dominio .com a su nombre</h5>
+                <p>Usted es el dueño. Si mañana se va, se lleva todo.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <span class="svc-item-num">03</span>
+              <div>
+                <h5>Ficha de Google verificada</h5>
+                <p>Con enlace a su web. Ahí es donde lo buscan.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <span class="svc-item-num">04</span>
+              <div>
+                <h5>SEO local + reseñas</h5>
+                <p>Aparece en "cerca de mí". Tus reseñas de Google incrustadas.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <span class="svc-item-num">05</span>
+              <div>
+                <h5>Reporte mensual</h5>
+                <p>Cuánta gente lo visitó, quién le escribió, qué funciona.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categoría: Digital -->
+        <div class="svc-cat" data-reveal style="--rd:.16s">
+          <div class="svc-cat-head">
+            <span class="svc-cat-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            </span>
+            <div>
+              <h4>Digital</h4>
+              <span class="svc-cat-desc">Herramientas que trabajan solas</span>
+            </div>
+          </div>
+          <div class="svc-cat-items">
+            <div class="svc-item">
+              <span class="svc-item-num">06</span>
+              <div>
+                <h5>Menú digital con QR</h5>
+                <p>Menú interactivo con fotos y precios. El cliente escanea y ordena. Incluye QR físico.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <span class="svc-item-num">07</span>
+              <div>
+                <h5>Landing para eventos</h5>
+                <p>Web temporal para promos, aperturas y ferias. Alta en 24h, duración que usted decida.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <span class="svc-item-num">08</span>
+              <div>
+                <h5>Chatbot de WhatsApp</h5>
+                <p>Responde horarios, precios y ubicación automáticamente. Sin que usted esté pegado al cel.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categoría: Ventas -->
+        <div class="svc-cat" data-reveal style="--rd:.24s">
+          <div class="svc-cat-head">
+            <span class="svc-cat-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            </span>
+            <div>
+              <h4>Ventas</h4>
+              <span class="svc-cat-desc">Vender y agendar sin fricción</span>
+            </div>
+          </div>
+          <div class="svc-cat-items">
+            <div class="svc-item">
+              <span class="svc-item-num">09</span>
+              <div>
+                <h5>Tienda online</h5>
+                <p>Catálogo de productos con carrito de compras y pago por SINPE o transferencia.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <span class="svc-item-num">10</span>
+              <div>
+                <h5>Sistema de reservas</h5>
+                <p>Agenda online para turnos y citas. Su cliente agenda solo, sin llamadas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PORTAFOLIO
+         ============================================================ -->
+    <section class="sec tight" id="portafolio">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <h2>Portafolio</h2>
+          <span class="mono">[ 02 ] · EJEMPLOS DE LO QUE HACEMOS</span>
+        </div>
+        <div class="portfolio-grid">
+          <div class="port-card featured" data-reveal>
+            <div class="tag">Taller mecánico · San José</div>
+            <h3>Caso: Taller mecánico</h3>
+            <p>Sin web, sin enlace en Google, con buenas reseñas. Le construimos una página con sus datos, botón de WhatsApp y ficha verificada. En 5 días hábiles.</p>
+            <div class="meta">EJEMPLO · TIPO DE PROYECTO REAL</div>
+          </div>
+          <div class="port-card" data-reveal style="--rd:.08s">
+            <div class="tag">Soda / pupusería</div>
+            <h3>Caso: Soda local</h3>
+            <p>Negocio con WhatsApp activo. Web con menú, ubicación y pedido directo.</p>
+            <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
+          </div>
+          <div class="port-card" data-reveal style="--rd:.16s">
+            <div class="tag">Pizzería</div>
+            <h3>Caso: Pizzería de barrio</h3>
+            <p>Negocio nocturno. Web con menú, galería y contacto directo.</p>
+            <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
+          </div>
+          <div class="port-card" data-reveal style="--rd:.24s">
+            <div class="tag">Taller multimarca</div>
+            <h3>Caso: Taller multimarca</h3>
+            <p>Ficha técnica con configurador de servicios y WhatsApp directo.</p>
+            <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
+          </div>
+          <div class="port-card" data-reveal style="--rd:.32s">
+            <div class="tag">Restaurante</div>
+            <h3>Caso: Restaurante</h3>
+            <p>Negocio con web existente. Mejora de diseño y SEO local.</p>
+            <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CURSOS
+         ============================================================ -->
+    <section class="sec dark" id="cursos">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <h2>Cursos</h2>
+          <span class="mono">[ 03 ] · APRENDÉ A PROGRAMAR — GRATIS</span>
+        </div>
+        <p style="max-width:56ch; margin-bottom:36px; color:hsl(40 20% 78%); font-size:18px;" data-reveal>Cursos gratuitos, online y asincrónicos. Desde cero hasta proyectos reales. Sin registro, sin costo, sin fechas límite.</p>
+        <div class="courses-grid">
+          <!-- Cursos gratuitos (próximamente) -->
+          <div class="course" data-reveal style="--rd:.05s; opacity:0.55; pointer-events:none;">
+            <div class="course-num">[01]</div>
+            <h3>Aprende Python desde cero</h3>
+            <p>19 lecciones interactivas: desde "Hola Mundo" hasta un Web Scraper completo. Proyectos prácticos en cada módulo.</p>
+            <div class="course-meta">19 LECCIONES · INTERACTIVO · PROYECTOS REALES</div>
+            <span class="course-tag">Próximamente</span>
+          </div>
+          <div class="course" data-reveal style="--rd:.12s; opacity:0.55; pointer-events:none;">
+            <div class="course-num">[02]</div>
+            <h3>Git y GitHub</h3>
+            <p>Control de versiones, ramas, colaboración y trabajo en equipo. De "git init" a GitHub Actions y proyectos documentados.</p>
+            <div class="course-meta">15 MÓDULOS · 90 EJERCICIOS · GRATIS</div>
+            <span class="course-tag">Próximamente</span>
+          </div>
+          <div class="course" data-reveal style="--rd:.19s; opacity:0.55; pointer-events:none;">
+            <div class="course-num">[03]</div>
+            <h3>HTML y CSS desde cero</h3>
+            <p>Estructura semántica, Flexbox, Grid, responsive, formularios, accesibilidad y SEO. De "&lt;!DOCTYPE&gt;" a una landing page completa.</p>
+            <div class="course-meta">15 MÓDULOS · 90+ EJERCICIOS · GRATIS</div>
+            <span class="course-tag">Próximamente</span>
+          </div>
+          <div class="course" data-reveal style="--rd:.26s; opacity:0.55; pointer-events:none;">
+            <div class="course-num">[04]</div>
+            <h3>JavaScript práctico</h3>
+            <p>DOM, eventos, async/await, APIs, módulos ES6 y 4 proyectos reales: calculadora, gestor de tareas, clima y más.</p>
+            <div class="course-meta">15 MÓDULOS · 90 EJERCICIOS · GRATIS</div>
+            <span class="course-tag">Próximamente</span>
+          </div>
+          <!-- Cursos de pago (próximamente) -->
+          <a class="course" data-reveal style="--rd:.33s; text-decoration:none; color:inherit; border-right:none;" href="#planes">
+            <div class="course-num">[05]</div>
+            <h3>WordPress desde cero</h3>
+            <p>Instalación, temas, plugins, SEO básico y seguridad. De "qué es WordPress" a su sitio publicado.</p>
+            <div class="course-meta">10 MÓDULOS · $10/MESS · INTERACTIVO</div>
+            <span class="course-tag">Próximamente</span>
+          </a>
+          <a class="course" data-reveal style="--rd:.4s; text-decoration:none; color:inherit; border-right:none;" href="#planes">
+            <div class="course-num">[06]</div>
+            <h3>Google Ads para negocios</h3>
+            <p>Campañas de búsqueda local, presupuesto, métricas y optimización. Atraer clientes que lo buscan ahora.</p>
+            <div class="course-meta">6 MÓDULOS · $15/MESS · INTERACTIVO</div>
+            <span class="course-tag">Próximamente</span>
+          </a>
+          <a class="course" data-reveal style="--rd:.47s; text-decoration:none; color:inherit; border-right:none; border-bottom:none;" href="#planes">
+            <div class="course-num">[07]</div>
+            <h3>WhatsApp Business completo</h3>
+            <p>Perfil profesional, catálogo, respuestas rápidas, etiquetas, broadcast y métricas de negocio.</p>
+            <div class="course-meta">5 MÓDULOS · $20/MESS · INTERACTIVO</div>
+            <span class="course-tag">Próximamente</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PLANES
+         ============================================================ -->
+    <section class="sec tight" id="planes">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <h2>Planes</h2>
+          <span class="mono">[ 04 ] · SIMPLE Y SIN PERMANENCIA</span>
+        </div>
+        <table class="price-table" data-reveal style="--rd:.1s">
+          <thead>
+            <tr>
+              <th scope="col">Base</th>
+              <th scope="col">Estándar</th>
+              <th scope="col">Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="plan-name">Base</td>
+              <td class="plan-name">Estándar</td>
+              <td class="plan-name">Premium</td>
+            </tr>
+            <tr>
+              <td><span class="plan-price">$25<small>≈ ₡13.500 / mes</small></span></td>
+              <td><span class="plan-price">$45<small>≈ ₡24.300 / mes</small></span></td>
+              <td><span class="plan-price">$75<small>≈ ₡40.500 / mes</small></span></td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>✓ Web 1 página / 5 secciones</li>
+                  <li>✓ Dominio .com a su nombre</li>
+                  <li>✓ SSL + hosting</li>
+                  <li>✓ Botón WhatsApp</li>
+                  <li>✓ Google Business verificado</li>
+                  <li>✓ 1 actualización / mes</li>
+                  <li>✓ Reporte mensual</li>
+                </ul>
+              </td>
+              <td class="featured">
+                <ul>
+                  <li>✓ Todo lo de Base</li>
+                  <li>✓ Galería de fotos</li>
+                  <li>✓ Mapa + reseñas Google</li>
+                  <li>✓ SEO local</li>
+                  <li>✓ Menú digital con QR</li>
+                  <li>✓ Landing para eventos (1/año)</li>
+                  <li>✓ 2 actualizaciones / mes</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>✓ Todo lo de Estándar</li>
+                  <li>✓ Multi-página</li>
+                  <li>✓ Chatbot WhatsApp</li>
+                  <li>✓ Tienda online básica</li>
+                  <li>✓ Sistema de reservas</li>
+                  <li>✓ 4 actualizaciones / mes</li>
+                  <li>✓ Soporte prioritario</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="price-note">¿No le gusta el mensual? Prepago: $250 con dominio + hosting 1 año y 3 meses de soporte. El primer mes va incluido en el anticipo.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROCESO
+         ============================================================ -->
+    <section class="sec dark" id="proceso">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <h2>Proceso</h2>
+          <span class="mono">[ 05 ] · DE LA PRIMERA LLAMADA A LA PUBLICACIÓN</span>
+        </div>
+        <div class="steps">
+          <div class="step" data-reveal>
+            <div class="step-num">01</div>
+            <h3>Le mostramos un ejemplo</h3>
+            <p>Le preparamos una página de muestra con los datos de SU negocio. Gratis, sin compromiso.</p>
+          </div>
+          <div class="step" data-reveal style="--rd:.1s">
+            <div class="step-num">02</div>
+            <h3>Contrato y anticipo</h3>
+            <p>50% al empezar. Contrato simple, en español, con todo claro.</p>
+          </div>
+          <div class="step" data-reveal style="--rd:.2s">
+            <div class="step-num">03</div>
+            <h3>Publicamos su web</h3>
+            <p>Con sus fotos, sus precios y su horario. En menos de 5 días hábiles.</p>
+          </div>
+          <div class="step" data-reveal style="--rd:.3s">
+            <div class="step-num">04</div>
+            <h3>Actualizamos cada mes</h3>
+            <p>Cambios, reporte y soporte. Si quiere irse, se lleva el dominio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA FINAL
+         ============================================================ -->
+    <section class="cta-final wrap" data-reveal>
+      <h2>¿Listo para <em>aparecer?</em></h2>
+      <p>Escríbanos por WhatsApp. Le preparamos una página de ejemplo con los datos de su negocio — gratis y sin compromiso.</p>
+      <a class="btn btn-big" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio">Cotizar por WhatsApp →</a>
+      <p class="hero-note">Respuesta en menos de 24 h · Cartago y San José · Costa Rica</p>
+    </section>
+
+    <!-- ============================================================
+         FORMULARIO DE CONTACTO
+         ============================================================ -->
+    <section class="sec" id="contacto">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <h2>Contacto</h2>
+          <span class="mono">[ 06 ] · ESCRÍBANOS DIRECTAMENTE</span>
+        </div>
+        <p style="max-width:48ch; margin-bottom:8px; color:var(--gris);" data-reveal>Complete el formulario y le respondemos en menos de 24 horas hábiles.</p>
+        <form class="contact-form" id="contact-form" data-reveal style="--rd:.1s" novalidate>
+          <div class="form-group">
+            <label for="cf-name">Nombre completo *</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="Ej: Juan Pérez">
+            <span class="form-error">Por favor ingrese su nombre.</span>
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Correo electrónico *</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="Ej: juan@negocio.com">
+            <span class="form-error">Por favor ingrese un correo válido.</span>
+          </div>
+          <div class="form-group">
+            <label for="cf-phone">WhatsApp (opcional)</label>
+            <input type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="Ej: 8888-8888">
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Mensaje *</label>
+            <textarea id="cf-message" name="message" required rows="4" placeholder="Cuéntenos sobre su negocio y qué necesita..."></textarea>
+            <span class="form-error">Por favor escriba su mensaje.</span>
+          </div>
+          <div class="form-consent">
+            <input type="checkbox" id="cf-consent" name="consent" required>
+            <label for="cf-consent">Acepto la <a href="pages/privacy-policy.html">Política de Privacidad</a> y el tratamiento de mis datos personales conforme a la Ley 8968. *</label>
+          </div>
+          <button class="btn" type="submit">Enviar mensaje →</button>
+          <p class="form-success" id="form-success">✓ Mensaje enviado. Le responderemos pronto.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="wrap foot">
       <div>
-        <div class="kicker">
-          <span class="kicker-line"></span>
-          <span class="mono kicker-txt">WEB · CURSOS · COSTA RICA</span>
-        </div>
-        <h1 class="reveal">Si no <em>aparece</em> en Google, no existe.</h1>
-        <p class="lead rise d-1">Le hacemos su página web, le ponemos el dominio a su nombre y lo dejamos apareciendo cuando alguien busca su negocio. También enseñamos a programar — gratis.</p>
-        <div class="hero-ctas rise d-2">
-          <a class="btn" href="#servicios">Ver servicios →</a>
-          <a class="btn ghost" href="#cursos">Ver cursos</a>
-        </div>
-        <p class="hero-note rise d-3">Sin permanencia · Dominio a su nombre · Soporte en español</p>
+        <span>APARECÉ — Presencia Digital · CR</span>
+        <span style="display:block; margin-top:4px; font-size:11px;">Cartago, Costa Rica</span>
       </div>
-      <aside class="panel slide-in d-2" aria-label="Datos de APARECÉ">
-        <div class="panel-row">
-          <span>Negocios atendidos</span>
-          <span class="accent">12+</span>
-        </div>
-        <div class="panel-row">
-          <span>Demos construidas</span>
-          <span class="ok">8</span>
-        </div>
-        <div class="panel-row">
-          <span>Cursos publicados</span>
-          <span class="ok">7</span>
-        </div>
-        <div class="panel-row">
-          <span>Servicios</span>
-          <span class="ok">10</span>
-        </div>
-        <div class="panel-row">
-          <span>Stack</span>
-          <span>HTML · CSS · JS</span>
-        </div>
-      </aside>
+      <div class="foot-links">
+        <a href="https://wa.me/50672169369">WhatsApp</a>
+        <a href="https://www.instagram.com/aparece_cr" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="mailto:aparece.cr@gmail.com">Email</a>
+      </div>
+      <div class="foot-links">
+        <a href="pages/privacy-policy.html">Privacidad</a>
+        <a href="pages/terms-conditions.html">Términos</a>
+        <a href="pages/cookie-policy.html">Cookies</a>
+        <a href="pages/refund-policy.html">Reembolsos</a>
+      </div>
+      <span>© 2026 · Hecho en Costa Rica</span>
     </div>
-  </section>
+  </footer>
 
-  <!-- SERVICIOS -->
-  <section class="sec" id="servicios">
-    <div class="wrap">
-      <div class="sec-head" data-reveal>
-        <h2>Servicios</h2>
-        <span class="mono">[ 01 ] · PRESENCIA DIGITAL PARA NEGOCIOS</span>
-      </div>
-      <div class="svc-intro" data-reveal>
-        <h3>Su negocio apareciendo en Google</h3>
-        <p>No vendemos "diseño web". Vendemos que cuando alguien busque su negocio en Google, lo encuentre — con web, WhatsApp y reseñas. La competencia no.</p>
-        <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" style="margin-top:24px;">Cotizar por WhatsApp →</a>
-      </div>
-
-      <!-- Categoría: Presencia -->
-      <div class="svc-cat" data-reveal style="--rd:.08s">
-        <div class="svc-cat-head">
-          <span class="svc-cat-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </span>
-          <div>
-            <h4>Presencia</h4>
-            <span class="svc-cat-desc">Que lo encuentren cuando lo buscan</span>
-          </div>
-        </div>
-        <div class="svc-cat-items">
-          <div class="svc-item">
-            <span class="svc-item-num">01</span>
-            <div>
-              <h5>Página web profesional</h5>
-              <p>Hecha a mano, rápida, con botón de WhatsApp. No parece plantilla.</p>
-            </div>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">02</span>
-            <div>
-              <h5>Dominio .com a su nombre</h5>
-              <p>Usted es el dueño. Si mañana se va, se lleva todo.</p>
-            </div>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">03</span>
-            <div>
-              <h5>Ficha de Google verificada</h5>
-              <p>Con enlace a su web. Ahí es donde lo buscan.</p>
-            </div>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">04</span>
-            <div>
-              <h5>SEO local + reseñas</h5>
-              <p>Aparece en "cerca de mí". Tus reseñas de Google incrustadas.</p>
-            </div>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">05</span>
-            <div>
-              <h5>Reporte mensual</h5>
-              <p>Cuánta gente lo visitó, quién le escribió, qué funciona.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Categoría: Digital -->
-      <div class="svc-cat" data-reveal style="--rd:.16s">
-        <div class="svc-cat-head">
-          <span class="svc-cat-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-          </span>
-          <div>
-            <h4>Digital</h4>
-            <span class="svc-cat-desc">Herramientas que trabajan solas</span>
-          </div>
-        </div>
-        <div class="svc-cat-items">
-          <div class="svc-item">
-            <span class="svc-item-num">06</span>
-            <div>
-              <h5>Menú digital con QR</h5>
-              <p>Menú interactivo con fotos y precios. El cliente escanea y ordena. Incluye QR físico.</p>
-            </div>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">07</span>
-            <div>
-              <h5>Landing para eventos</h5>
-              <p>Web temporal para promos, aperturas y ferias. Alta en 24h, duración que usted decida.</p>
-            </div>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">08</span>
-            <div>
-              <h5>Chatbot de WhatsApp</h5>
-              <p>Responde horarios, precios y ubicación automáticamente. Sin que usted esté pegado al cel.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Categoría: Ventas -->
-      <div class="svc-cat" data-reveal style="--rd:.24s">
-        <div class="svc-cat-head">
-          <span class="svc-cat-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          </span>
-          <div>
-            <h4>Ventas</h4>
-            <span class="svc-cat-desc">Vender y agendar sin fricción</span>
-          </div>
-        </div>
-        <div class="svc-cat-items">
-          <div class="svc-item">
-            <span class="svc-item-num">09</span>
-            <div>
-              <h5>Tienda online</h5>
-              <p>Catálogo de productos con carrito de compras y pago por SINPE o transferencia.</p>
-            </div>
-          </div>
-          <div class="svc-item">
-            <span class="svc-item-num">10</span>
-            <div>
-              <h5>Sistema de reservas</h5>
-              <p>Agenda online para turnos y citas. Su cliente agenda solo, sin llamadas.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PORTAFOLIO -->
-  <section class="sec tight" id="portafolio">
-    <div class="wrap">
-      <div class="sec-head" data-reveal>
-        <h2>Portafolio</h2>
-        <span class="mono">[ 02 ] · EJEMPLOS DE LO QUE HACEMOS</span>
-      </div>
-      <div class="portfolio-grid">
-        <div class="port-card featured" data-reveal>
-          <div class="tag">Taller mecánico · San José</div>
-          <h3>Caso: Taller mecánico</h3>
-          <p>Sin web, sin enlace en Google, con buenas reseñas. Le construimos una página con sus datos, botón de WhatsApp y ficha verificada. En 5 días hábiles.</p>
-          <div class="meta">EJEMPLO · TIPO DE PROYECTO REAL</div>
-        </div>
-        <div class="port-card" data-reveal style="--rd:.08s">
-          <div class="tag">Soda / pupusería</div>
-          <h3>Caso: Soda local</h3>
-          <p>Negocio con WhatsApp activo. Web con menú, ubicación y pedido directo.</p>
-          <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
-        </div>
-        <div class="port-card" data-reveal style="--rd:.16s">
-          <div class="tag">Pizzería</div>
-          <h3>Caso: Pizzería de barrio</h3>
-          <p>Negocio nocturno. Web con menú, galería y contacto directo.</p>
-          <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
-        </div>
-        <div class="port-card" data-reveal style="--rd:.24s">
-          <div class="tag">Taller multimarca</div>
-          <h3>Caso: Taller multimarca</h3>
-          <p>Ficha técnica con configurador de servicios y WhatsApp directo.</p>
-          <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
-        </div>
-        <div class="port-card" data-reveal style="--rd:.32s">
-          <div class="tag">Restaurante</div>
-          <h3>Caso: Restaurante</h3>
-          <p>Negocio con web existente. Mejora de diseño y SEO local.</p>
-          <div class="meta">EJEMPLO · TIPO DE PROYECTO</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CURSOS -->
-  <section class="sec dark" id="cursos">
-    <div class="wrap">
-      <div class="sec-head" data-reveal>
-        <h2>Cursos</h2>
-        <span class="mono">[ 03 ] · APRENDÉ A PROGRAMAR — GRATIS</span>
-      </div>
-      <p style="max-width:56ch; margin-bottom:36px; color:hsl(40 20% 78%); font-size:18px;" data-reveal>Cursos gratuitos, online y asincrónicos. Desde cero hasta proyectos reales. Sin registro, sin costo, sin fechas límite.</p>
-      <div class="courses-grid">
-        <div class="course" data-reveal style="--rd:.05s; opacity:0.6; pointer-events:none;">
-          <div class="course-num">[01]</div>
-          <h3>Aprende Python desde cero</h3>
-          <p>19 lecciones interactivas: desde "Hola Mundo" hasta un Web Scraper completo. Proyectos prácticos en cada módulo.</p>
-          <div class="course-meta">19 LECCIONES · INTERACTIVO · PROYECTOS REALES</div>
-          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Arreglando</span>
-        </div>
-        <div class="course" data-reveal style="--rd:.12s; opacity:0.6; pointer-events:none;">
-          <div class="course-num">[02]</div>
-          <h3>Git y GitHub</h3>
-          <p>Control de versiones, ramas, colaboración y trabajo en equipo. De "git init" a GitHub Actions y proyectos documentados.</p>
-          <div class="course-meta">15 MÓDULOS · 90 EJERCICIOS · GRATIS</div>
-          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Arreglando</span>
-        </div>
-        <div class="course" data-reveal style="--rd:.19s; opacity:0.6; pointer-events:none;">
-          <div class="course-num">[03]</div>
-          <h3>HTML y CSS desde cero</h3>
-          <p>Estructura semántica, Flexbox, Grid, responsive, formularios, accesibilidad y SEO. De "&lt;!DOCTYPE&gt;" a una landing page completa.</p>
-          <div class="course-meta">15 MÓDULOS · 90+ EJERCICIOS · GRATIS</div>
-          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Arreglando</span>
-        </div>
-        <div class="course" data-reveal style="--rd:.26s; opacity:0.6; pointer-events:none;">
-          <div class="course-num">[04]</div>
-          <h3>JavaScript práctico</h3>
-          <p>DOM, eventos, async/await, APIs, módulos ES6 y 4 proyectos reales: calculadora, gestor de tareas, clima y más.</p>
-          <div class="course-meta">15 MÓDULOS · 90 EJERCICIOS · GRATIS</div>
-          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Arreglando</span>
-        </div>
-        <a class="course" data-reveal style="--rd:.33s; text-decoration:none; color:inherit; border-right:none;" href="#planes">
-          <div class="course-num">[05]</div>
-          <h3>WordPress desde cero</h3>
-          <p>Instalación, temas, plugins, SEO básico y seguridad. De "qué es WordPress" a su sitio publicado.</p>
-          <div class="course-meta">10 MÓDULOS · $10/MESS · INTERACTIVO</div>
-          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Próximamente</span>
-        </a>
-        <a class="course" data-reveal style="--rd:.4s; text-decoration:none; color:inherit; border-right:none;" href="#planes">
-          <div class="course-num">[06]</div>
-          <h3>Google Ads para negocios</h3>
-          <p>Campañas de búsqueda local, presupuesto, métricas y optimización. Atraer clientes que lo buscan ahora.</p>
-          <div class="course-meta">6 MÓDULOS · $15/MESS · INTERACTIVO</div>
-          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Próximamente</span>
-        </a>
-        <a class="course" data-reveal style="--rd:.47s; text-decoration:none; color:inherit; border-right:none; border-bottom:none;" href="#planes">
-          <div class="course-num">[07]</div>
-          <h3>WhatsApp Business completo</h3>
-          <p>Perfil profesional, catálogo, respuestas rápidas, etiquetas, broadcast y métricas de negocio.</p>
-          <div class="course-meta">5 MÓDULOS · $20/MESS · INTERACTIVO</div>
-          <span class="course-tag" style="border-color:var(--gris); color:var(--gris);">Próximamente</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLANES -->
-  <section class="sec tight" id="planes">
-    <div class="wrap">
-      <div class="sec-head" data-reveal>
-        <h2>Planes</h2>
-        <span class="mono">[ 04 ] · SIMPLE Y SIN PERMANENCIA</span>
-      </div>
-      <table class="price-table" data-reveal style="--rd:.1s">
-        <thead>
-          <tr>
-            <th scope="col">Base</th>
-            <th scope="col">Estándar</th>
-            <th scope="col">Premium</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="plan-name">Base</td>
-            <td class="plan-name">Estándar</td>
-            <td class="plan-name">Premium</td>
-          </tr>
-          <tr>
-            <td><span class="plan-price">$25<small>≈ ₡13.500 / mes</small></span></td>
-            <td><span class="plan-price">$45<small>≈ ₡24.300 / mes</small></span></td>
-            <td><span class="plan-price">$75<small>≈ ₡40.500 / mes</small></span></td>
-          </tr>
-          <tr>
-            <td>
-              <ul>
-                <li>✓ Web 1 página / 5 secciones</li>
-                <li>✓ Dominio .com a su nombre</li>
-                <li>✓ SSL + hosting</li>
-                <li>✓ Botón WhatsApp</li>
-                <li>✓ Google Business verificado</li>
-                <li>✓ 1 actualización / mes</li>
-                <li>✓ Reporte mensual</li>
-              </ul>
-            </td>
-            <td class="featured">
-              <ul>
-                <li>✓ Todo lo de Base</li>
-                <li>✓ Galería de fotos</li>
-                <li>✓ Mapa + reseñas Google</li>
-                <li>✓ SEO local</li>
-                <li>✓ Menú digital con QR</li>
-                <li>✓ Landing para eventos (1/año)</li>
-                <li>✓ 2 actualizaciones / mes</li>
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <li>✓ Todo lo de Estándar</li>
-                <li>✓ Multi-página</li>
-                <li>✓ Chatbot WhatsApp</li>
-                <li>✓ Tienda online básica</li>
-                <li>✓ Sistema de reservas</li>
-                <li>✓ 4 actualizaciones / mes</li>
-                <li>✓ Soporte prioritario</li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="price-note">¿No le gusta el mensual? Prepago: $250 con dominio + hosting 1 año y 3 meses de soporte. El primer mes va incluido en el anticipo.</p>
-    </div>
-  </section>
-
-  <!-- PROCESO -->
-  <section class="sec dark" id="proceso">
-    <div class="wrap">
-      <div class="sec-head" data-reveal>
-        <h2>Proceso</h2>
-        <span class="mono">[ 05 ] · DE LA PRIMERA LLAMADA A LA PUBLICACIÓN</span>
-      </div>
-      <div class="steps">
-        <div class="step" data-reveal>
-          <div class="step-num">01</div>
-          <h3>Le mostramos un ejemplo</h3>
-          <p>Le preparamos una página de muestra con los datos de SU negocio. Gratis, sin compromiso.</p>
-        </div>
-        <div class="step" data-reveal style="--rd:.1s">
-          <div class="step-num">02</div>
-          <h3>Contrato y anticipo</h3>
-          <p>50% al empezar. Contrato simple, en español, con todo claro.</p>
-        </div>
-        <div class="step" data-reveal style="--rd:.2s">
-          <div class="step-num">03</div>
-          <h3>Publicamos su web</h3>
-          <p>Con sus fotos, sus precios y su horario. En menos de 5 días hábiles.</p>
-        </div>
-        <div class="step" data-reveal style="--rd:.3s">
-          <div class="step-num">04</div>
-          <h3>Actualizamos cada mes</h3>
-          <p>Cambios, reporte y soporte. Si quiere irse, se lleva el dominio.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta-final wrap" data-reveal>
-    <h2>¿Listo para <em>aparecer?</em></h2>
-    <p>Escríbanos por WhatsApp. Le preparamos una página de ejemplo con los datos de su negocio — gratis y sin compromiso.</p>
-    <a class="btn btn-big" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio">Cotizar por WhatsApp →</a>
-    <p class="hero-note">Respuesta en menos de 24 h · Cartago y San José · Costa Rica</p>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <span>APARECÉ — Presencia Digital · CR</span>
-    <span>WhatsApp +506&nbsp;7216‑9369 · hola@aparece.cr</span>
-    <span>© 2026 · Hecho en Costa Rica</span>
-  </div>
-</footer>
-
-<script>
-  // Header se compacta al bajar
-  const header = document.querySelector('header');
-  addEventListener('scroll', () => {
-    header.classList.toggle('is-scrolled', scrollY > 8);
-  }, { passive: true });
-
-  // Revelado al hacer scroll (respeta prefers-reduced-motion vía CSS)
-  const revealables = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window && revealables.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-    revealables.forEach(el => io.observe(el));
-  } else {
-    revealables.forEach(el => el.classList.add('is-in'));
-  }
-
-  // Puntos de fondo que reaccionan al cursor (hero + bloques oscuros)
-  (function () {
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const coarse = matchMedia('(pointer: coarse)').matches;
-    if (reduce || coarse) return;
-
-    function attachDots(canvas, container, opts) {
-      const ctx = canvas.getContext('2d');
-      const SPACING = opts.spacing || 42;
-      const RADIUS_REACT = 130;
-      const MAX_PUSH = 16;
-      const EASE = 0.12;
-
-      let w, h, dpr, dots = [];
-      let mouse = { x: -9999, y: -9999 };
-
-      function build() {
-        dpr = Math.min(devicePixelRatio || 1, 2);
-        w = canvas.clientWidth; h = canvas.clientHeight;
-        canvas.width = w * dpr; canvas.height = h * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-        dots = [];
-        const cols = Math.ceil(w / SPACING) + 1;
-        const rows = Math.ceil(h / SPACING) + 1;
-        for (let i = 0; i < cols; i++) {
-          for (let j = 0; j < rows; j++) {
-            const ox = i * SPACING, oy = j * SPACING;
-            dots.push({ ox, oy, x: ox, y: oy });
-          }
-        }
-      }
-
-      container.addEventListener('mousemove', (e) => {
-        const r = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - r.left;
-        mouse.y = e.clientY - r.top;
-      });
-      container.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
-
-      function tick() {
-        ctx.clearRect(0, 0, w, h);
-        for (const d of dots) {
-          const dx = d.ox - mouse.x, dy = d.oy - mouse.y;
-          const dist = Math.hypot(dx, dy);
-          let tx = d.ox, ty = d.oy, near = 0;
-          if (dist < RADIUS_REACT) {
-            near = 1 - dist / RADIUS_REACT;
-            const push = near * MAX_PUSH;
-            const ang = Math.atan2(dy, dx);
-            tx = d.ox + Math.cos(ang) * push;
-            ty = d.oy + Math.sin(ang) * push;
-          }
-          d.x += (tx - d.x) * EASE;
-          d.y += (ty - d.y) * EASE;
-
-          ctx.beginPath();
-          ctx.fillStyle = near > 0.05 ? opts.hoverColor : opts.baseColor;
-          ctx.globalAlpha = near > 0.05 ? opts.baseAlpha + near * 0.4 : opts.baseAlpha;
-          ctx.arc(d.x, d.y, near > 0.05 ? 1.6 + near * 1.4 : 1.4, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(tick);
-      }
-
-      let rt;
-      addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 150); });
-      build();
-      requestAnimationFrame(tick);
-    }
-
-    // Hero: fondo claro, puntos carbón que se iluminan de naranja
-    const heroCanvas = document.getElementById('dots-bg');
-    if (heroCanvas) {
-      attachDots(heroCanvas, heroCanvas.closest('.hero'), {
-        baseColor: 'hsl(220 12% 7%)', hoverColor: 'hsl(24 95% 52%)', baseAlpha: 0.10
-      });
-    }
-
-    // Bloques oscuros: fondo carbón, puntos claros que se iluminan de naranja
-    document.querySelectorAll('.sec.dark').forEach((section) => {
-      const c = document.createElement('canvas');
-      c.className = 'dots-bg';
-      c.setAttribute('aria-hidden', 'true');
-      section.insertBefore(c, section.firstChild);
-      attachDots(c, section, {
-        baseColor: 'hsl(40 20% 82%)', hoverColor: 'hsl(24 95% 58%)', baseAlpha: 0.16
-      });
-    });
-  })();
-</script>
+  <!-- JavaScript -->
+  <script src="js/main.js" defer></script>
 
 </body>
 </html>

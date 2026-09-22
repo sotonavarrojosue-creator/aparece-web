@@ -2,6 +2,10 @@
 
 Página central de **APARECÉ**: presencia digital para negocios de Costa Rica + cursos gratuitos de programación.
 
+**URL:** [https://aparece.cr](https://aparece.cr)
+
+---
+
 ## Contenido
 
 - **Servicios**: páginas web para PYMEs (web + dominio + Google Business + WhatsApp)
@@ -15,15 +19,70 @@ Página central de **APARECÉ**: presencia digital para negocios de Costa Rica +
 - Google Fonts: Barlow Condensed, Barlow, IBM Plex Mono
 - Sin frameworks, sin build, sin dependencias
 
+## Estructura
+
+```
+├── index.html                  ← Página principal
+├── css/
+│   ├── styles.css              ← Estilos principales
+│   └── responsive.css          ← Media queries (móvil/tablet)
+├── js/
+│   └── main.js                 ← JavaScript (menú, cookies, formulario, canvas)
+├── img/                        ← Imágenes
+├── pages/
+│   ├── privacy-policy.html     ← Política de Privacidad (Ley 8968)
+│   ├── terms-conditions.html   ← Términos y Condiciones (Ley 10946)
+│   ├── cookie-policy.html      ← Política de Cookies
+│   └── refund-policy.html      ← Política de Reembolso (Ley 7472)
+├── docs/
+│   ├── MANTENIMIENTO.md        ← Cómo cambiar textos, colores, etc.
+│   ├── COLORES.md              ← Paleta de colores y tipografía
+│   └── LEGAL.md                ← Obligaciones legales y pendientes
+└── README.md                   ← Este archivo
+```
+
+## Funcionalidades
+
+- ✅ Menú hamburguesa móvil
+- ✅ Scroll reveal animations
+- ✅ Canvas interactivo con el cursor
+- ✅ Banner de consentimiento de cookies
+- ✅ Formulario de contacto con consentimiento (Ley 8968)
+- ✅ Páginas legales completas
+- ✅ Open Graph + Twitter Cards
+- ✅ JSON-LD LocalBusiness
+- ✅ Accesibilidad (skip-link, aria-labels, contraste WCAG)
+
 ## Deploy
 
-GitHub Pages: `https://sotonavarrojosue-creator.github.io/aparece-web/`
+GitHub Pages se actualiza automáticamente al hacer push a `main`.
+
+```bash
+git add .
+git commit -m "Descripción del cambio"
+git push
+```
 
 ## Marca
 
-- Paleta: carbón (`#0B0F14`) + papel (`#F6F1E7`) + naranja (`#FF5A1F`)
-- Tipografía: Barlow Condensed (display) + Barlow (body) + IBM Plex Mono (labels)
-- Logo: pin de mapa naranja con check
+- **Paleta**: carbón (`#111318`) + papel (`#f6f1e7`) + naranja (`#ff5a1f`)
+- **Tipografía**: Barlow Condensed (display) + Barlow (body) + IBM Plex Mono (labels)
+- **Logo**: pin de mapa naranja con check
+
+## Contacto
+
+- **WhatsApp:** [+506 7216‑9369](https://wa.me/50672169369)
+- **Instagram:** [@aparece_cr](https://www.instagram.com/aparece_cr)
+- **Email:** [aparece.cr@gmail.com](mailto:aparece.cr@gmail.com)
+
+## Cumplimiento Legal
+
+Este sitio cumple con:
+- **Ley 8968** — Protección de Datos Personales (Costa Rica)
+- **Ley 10946** — Gobernanza de Servicios Digitales (Costa Rica, 2026)
+- **Ley 7472** — Defensa del Consumidor (Costa Rica)
+
+Ver `docs/LEGAL.md` para más detalles y pendientes.
 
 ## Licencia
 

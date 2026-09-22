@@ -1,0 +1,67 @@
+/* ============================================================
+   APARECÉ — Responsive breakpoints
+   ============================================================ */
+
+/* --- Tablet (≤900px) --- */
+@media (max-width: 900px) {
+  /* Hero */
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero { padding: 56px 0 48px; }
+
+  /* Nav: hamburger visible, links ocultos */
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--papel); border-bottom: 1.5px solid var(--hairline);
+    padding: 8px 0; box-shadow: 0 12px 24px -8px hsl(220 20% 10% / .15);
+  }
+  .nav-links.is-open { display: flex; }
+  .nav-links li { list-style: none; }
+  .nav-links a {
+    display: block; padding: 14px 24px;
+    border-bottom: 1px solid hsl(220 10% 92%);
+    font-size: 14px;
+  }
+  .nav-links a::after { display: none; }
+  .nav-links a:hover { background: hsl(220 10% 96%); }
+
+  /* Proceso + Cursos */
+  .steps, .courses-grid { grid-template-columns: 1fr 1fr; }
+  .step:nth-child(2), .course:nth-child(2) { border-right: none; }
+  .step:nth-child(-n+2), .course:nth-child(-n+2) { border-bottom: 1px solid hsl(220 10% 30%); }
+  .course:nth-child(3) { border-right: 1px solid hsl(220 10% 30%); }
+  .course:nth-child(4) { border-right: none; }
+  .course:nth-child(-n+4):not(:nth-child(-n+2)) { border-bottom: 1px solid hsl(220 10% 30%); }
+  .course:nth-child(5) { border-right: 1px solid hsl(220 10% 30%); }
+  .course:nth-child(6) { border-right: none; }
+
+  /* Portafolio */
+  .portfolio-grid { grid-template-columns: 1fr; gap: 40px; }
+  .port-card.featured { grid-row: auto; }
+}
+
+/* --- Mobile (≤560px) --- */
+@media (max-width: 560px) {
+  .steps, .courses-grid { grid-template-columns: 1fr; }
+  .step, .course {
+    border-right: none !important;
+    border-bottom: 1px solid hsl(220 10% 30%);
+  }
+  .step:last-child, .course:last-child { border-bottom: none; }
+  body { font-size: 16px; }
+
+  /* Footer apilado */
+  .foot { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+  .foot-links { justify-content: center; }
+
+  /* Cookie banner responsive */
+  .cookie-banner { flex-direction: column; text-align: center; }
+  .cookie-actions { justify-content: center; }
+
+  /* CTA final centrado */
+  .cta-final { text-align: center; }
+  .cta-final h2 { margin-inline: auto; }
+}
