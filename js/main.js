@@ -149,19 +149,24 @@
     }
 
     // Hero: fondo claro, puntos carbón → naranja
-    const heroCanvas = document.getElementById('dots-bg');
-    if (heroCanvas) {
-      attachDots(heroCanvas, heroCanvas.closest('.hero'), {
+    // (si ya tiene brand-bg, no duplicar)
+    const hero = document.querySelector('.hero');
+    if (hero && !hero.querySelector('[data-brand-bg]')) {
+      const c = document.createElement('canvas');
+      c.className = 'dots-bg';
+      c.id = 'dots-bg';
+      c.setAttribute('aria-hidden', 'true');
+      hero.insertBefore(c, hero.firstChild);
+      attachDots(c, hero, {
         baseColor: 'hsl(220 12% 7%)',
         hoverColor: 'hsl(24 95% 52%)',
         baseAlpha: 0.10
       });
     }
 
-    // Bloques oscuros: ahora usan ShapeWaves (js/shape-waves-bg.js).
-    // El fondo de puntos solo aplica si una sección NO tiene [data-shape-waves].
+    // Bloques oscuros: puntos solo si no tienen brand-bg
     document.querySelectorAll('.sec.dark').forEach((section) => {
-      if (section.querySelector('[data-shape-waves]')) return;
+      if (section.querySelector('[data-brand-bg]')) return;
       const c = document.createElement('canvas');
       c.className = 'dots-bg';
       c.setAttribute('aria-hidden', 'true');
