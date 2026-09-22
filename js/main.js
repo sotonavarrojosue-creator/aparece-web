@@ -186,16 +186,21 @@
     if (consent) return;
 
     // Mostrar banner después de 1s
-    setTimeout(() => { banner.classList.add('is-visible'); }, 1000);
+    setTimeout(() => {
+      banner.hidden = false;
+      requestAnimationFrame(() => banner.classList.add('is-visible'));
+    }, 1000);
 
     acceptBtn.addEventListener('click', () => {
       localStorage.setItem('cookie_consent', 'accepted');
       banner.classList.remove('is-visible');
+      setTimeout(() => { banner.hidden = true; }, 400);
     });
 
     rejectBtn.addEventListener('click', () => {
       localStorage.setItem('cookie_consent', 'rejected');
       banner.classList.remove('is-visible');
+      setTimeout(() => { banner.hidden = true; }, 400);
     });
   })();
 
@@ -243,18 +248,18 @@
 
       // Validar consentimiento
       const consent = form.querySelector('#cf-consent');
+      const consentGroup = form.querySelector('#cf-consent-group');
       if (consent && !consent.checked) {
         consent.focus();
+        consentGroup?.classList.add('error');
         valid = false;
+      } else {
+        consentGroup?.classList.remove('error');
       }
 
       if (valid) {
         // Construir mailto con los datos
-        const nombre = encodeURIComponent(name.value.trim());
-        const correo = encodeURIComponent(email.value.trim());
-        const telefono = encodeURIComponent(form.querySelector('#cf-phone')?.value.trim() || 'No proporcionado');
-        const mensaje = encodeURIComponent(msg.value.trim());
-        const asunto = encodeURIComponent('Consulta desde aparece.cr');
+        const asunto = encodeURIComponent('Consulta desde la web de APARECÉ');
         const body = encodeURIComponent(
           `Nombre: ${name.value.trim()}\n` +
           `Email: ${email.value.trim()}\n` +

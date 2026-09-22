@@ -2,7 +2,9 @@
 
 Página central de **APARECÉ**: presencia digital para negocios de Costa Rica + cursos gratuitos de programación.
 
-**URL:** [https://aparece.cr](https://aparece.cr)
+**URL:** [https://sotonavarrojosue-creator.github.io/aparece-web/](https://sotonavarrojosue-creator.github.io/aparece-web/)
+
+> **Nota:** `aparece.cr` aún no está configurado como dominio. Al configurarlo en GitHub Pages (Settings → Pages → Custom domain), cambiar las URLs canónicas en `index.html`, `robots.txt` y `sitemap.xml`.
 
 ---
 
@@ -23,12 +25,16 @@ Página central de **APARECÉ**: presencia digital para negocios de Costa Rica +
 
 ```
 ├── index.html                  ← Página principal
+├── robots.txt                  ← Reglas para buscadores
+├── sitemap.xml                 ← Mapa del sitio (SEO)
+├── .gitignore                  ← Archivos ignorados por Git
 ├── css/
 │   ├── styles.css              ← Estilos principales
 │   └── responsive.css          ← Media queries (móvil/tablet)
 ├── js/
 │   └── main.js                 ← JavaScript (menú, cookies, formulario, canvas)
-├── img/                        ← Imágenes
+├── img/
+│   └── og-image.png            ← Imagen para compartir en redes (1200×630)
 ├── pages/
 │   ├── privacy-policy.html     ← Política de Privacidad (Ley 8968)
 │   ├── terms-conditions.html   ← Términos y Condiciones (Ley 10946)
@@ -49,8 +55,10 @@ Página central de **APARECÉ**: presencia digital para negocios de Costa Rica +
 - ✅ Banner de consentimiento de cookies
 - ✅ Formulario de contacto con consentimiento (Ley 8968)
 - ✅ Páginas legales completas
-- ✅ Open Graph + Twitter Cards
+- ✅ Sección de preguntas frecuentes (FAQ) con JSON-LD FAQPage
+- ✅ Open Graph + Twitter Cards + imagen OG
 - ✅ JSON-LD LocalBusiness
+- ✅ robots.txt + sitemap.xml
 - ✅ Accesibilidad (skip-link, aria-labels, contraste WCAG)
 
 ## Deploy

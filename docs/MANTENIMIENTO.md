@@ -8,13 +8,13 @@ Cambios rápidos que puedes hacer sin tocar el código complejo.
 
 Todo el texto está en `index.html`. Busca el texto que quieres cambiar y edítalo directamente.
 
-**Ejemplo:** Cambiar "12+" negocios atendidos:
+**Ejemplo:** Cambiar el subtítulo del hero:
 ```html
 <!-- Buscar esto -->
-<span class="accent">12+</span>
+<p class="hero-note">Respuesta habitual en menos de 24 h · Cartago y San José · Costa Rica</p>
 
-<!-- Cambiar por -->
-<span class="accent">15+</span>
+<!-- Cambiar por (si cambia el horario de respuesta) -->
+<p class="hero-note">Respuesta habitual en menos de 48 h · Cartago y San José · Costa Rica</p>
 ```
 
 ---
@@ -28,7 +28,7 @@ Los colores están definidos como variables CSS en `css/styles.css`:
   --carbono:     hsl(220 12% 7%);   /* Fondo oscuro */
   --papel:       hsl(40 33% 96%);   /* Fondo claro */
   --naranja:     hsl(24 95% 52%);   /* Acentos */
-  --gris:        hsl(220 8% 38%);   /* Texto secundario */
+  --gris:        hsl(220 8% 32%);   /* Texto secundario */
 }
 ```
 
@@ -91,7 +91,7 @@ Para cursos **de pago** (próximamente):
 1. En `index.html`, busca la tabla `<!-- PLANES -->`
 2. Modifica precios, nombres o características
 
-**Importante:** Los precios en colones se calculan approximate. Actualiza ambos valores.
+**Importante:** Los precios en colones se calculan de forma aproximada. Actualiza ambos valores cuando cambies el precio en dólares.
 
 ---
 
@@ -105,7 +105,7 @@ Cuando tengas testimonios, busca la sección `<!-- PORTAFOLIO -->` y agrega una 
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <h2>Testimonios</h2>
-      <span class="mono">[ 06 ] · LO QUE DICEN NUESTROS CLIENTES</span>
+      <span class="mono">[ 07 ] · LO QUE DICEN NUESTROS CLIENTES</span>
     </div>
     <!-- Agregar tarjetas de testimonios aquí -->
   </div>
@@ -137,15 +137,21 @@ Busca `aparece_cr` en `index.html` y reemplázalo por tu usuario actual.
 ```
 LANDING PAGE/
 ├── index.html          ← Todo el contenido HTML
+├── robots.txt          ← Reglas para buscadores
+├── sitemap.xml         ← Mapa del sitio (SEO)
+├── .gitignore          ← Archivos ignorados por Git
 ├── css/
 │   ├── styles.css      ← Estilos principales
 │   └── responsive.css  ← Estilos para móvil/tablet
 ├── js/
-│   └── main.js         ← JavaScript (animaciones, menú)
-├── img/                ← Imágenes (logo, fotos)
+│   └── main.js         ← JavaScript (animaciones, menú, cookies, formulario)
+├── img/
+│   └── og-image.png    ← Imagen para compartir en redes (1200×630)
+├── pages/              ← Páginas legales (privacidad, términos, cookies, reembolsos)
 ├── docs/
 │   ├── MANTENIMIENTO.md  ← Este archivo
-│   └── COLORES.md        ← Paleta de colores
+│   ├── COLORES.md        ← Paleta de colores
+│   └── LEGAL.md          ← Obligaciones legales
 └── README.md           ← Instrucciones del proyecto
 ```
 

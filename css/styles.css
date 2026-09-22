@@ -275,7 +275,7 @@ header.is-scrolled { box-shadow: 0 8px 24px -12px hsl(220 20% 10% / .25); }
 .port-card.featured p { color: hsl(40 20% 78%); }
 .port-card .meta {
   font-family: var(--mono); font-size: 11px; letter-spacing: 1px;
-  color: var(--gris-claro); margin-top: 16px;
+  color: var(--gris); margin-top: 16px;
 }
 .port-card.featured .meta { color: hsl(40 20% 68%); }
 
@@ -293,7 +293,8 @@ header.is-scrolled { box-shadow: 0 8px 24px -12px hsl(220 20% 10% / .25); }
   position: relative; transition: background .2s var(--ease);
 }
 .course:hover { background: hsl(220 10% 11%); }
-.course:last-child { border-right: none; }
+.courses-grid .course:nth-child(even) { border-right: none; }
+.course:last-child { border-right: none; border-bottom: none; }
 .course .course-num {
   font-family: var(--mono); font-size: 11px; letter-spacing: 2px;
   color: var(--naranja); margin-bottom: 10px;
@@ -319,18 +320,14 @@ header.is-scrolled { box-shadow: 0 8px 24px -12px hsl(220 20% 10% / .25); }
    ============================================================ */
 .price-table { width: 100%; border-collapse: collapse; }
 .price-table th {
-  font-family: var(--mono); font-size: 12px; letter-spacing: 2px;
-  text-transform: uppercase; text-align: left;
-  padding: 12px 10px; background: var(--carbono); color: var(--papel);
+  font-family: var(--disp); font-weight: 700; font-size: 26px;
+  letter-spacing: .5px; text-transform: uppercase; text-align: left;
+  padding: 14px 10px; background: var(--carbono); color: var(--papel);
   border: 1.5px solid var(--carbono);
 }
 .price-table td {
   padding: 16px 10px; border: 1px solid var(--hairline);
   vertical-align: top; font-size: 15.5px;
-}
-.price-table .plan-name {
-  font-family: var(--disp); font-weight: 700; font-size: 26px;
-  text-transform: uppercase; letter-spacing: .5px;
 }
 .price-table .plan-price {
   font-family: var(--mono); font-size: 26px;
@@ -354,7 +351,7 @@ header.is-scrolled { box-shadow: 0 8px 24px -12px hsl(220 20% 10% / .25); }
   max-width: 48ch; margin-bottom: 8px; color: var(--gris);
 }
 .course-locked { opacity: .55; pointer-events: none; }
-.course-link { text-decoration: none; color: inherit; border-right: none; }
+.course-link { text-decoration: none; color: inherit; }
 .course-link-last { border-right: none; border-bottom: none; }
 .foot-sub { display: block; margin-top: 4px; font-size: 11px; }
 
@@ -455,6 +452,7 @@ footer {
   transform: translateY(100%); transition: transform .4s var(--ease);
 }
 .cookie-banner.is-visible { transform: translateY(0); }
+.cookie-banner[hidden] { display: none; }
 .cookie-banner p { font-size: 14px; line-height: 1.5; margin: 0; flex: 1; min-width: 280px; }
 .cookie-banner a { color: var(--naranja); }
 .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
@@ -517,11 +515,43 @@ footer {
 .form-group.error input,
 .form-group.error textarea { border-color: #e74c3c; }
 .form-group.error .form-error { display: block; }
+.form-consent.error .form-error { display: block; }
+.form-consent.error label { color: #e74c3c; }
+.form-consent { position: relative; }
 .form-success {
   font-family: var(--mono); font-size: 13px; color: var(--verde);
   letter-spacing: .5px; display: none; margin-top: 12px;
 }
 .form-success.is-visible { display: block; }
+
+/* ============================================================
+   PREGUNTAS FRECUENTES
+   ============================================================ */
+.faq-list { display: flex; flex-direction: column; gap: 10px; max-width: 800px; }
+.faq-item {
+  border: 1.5px solid var(--carbono); background: var(--papel);
+  border-radius: var(--r-btn);
+}
+.faq-item summary {
+  font-family: var(--disp); font-weight: 700; font-size: 20px;
+  text-transform: uppercase; letter-spacing: .5px;
+  padding: 16px 20px; cursor: pointer; list-style: none;
+  position: relative; padding-right: 44px;
+  transition: background .2s var(--ease);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; position: absolute; right: 18px; top: 50%;
+  transform: translateY(-50%); font-family: var(--mono);
+  font-size: 22px; color: var(--naranja); font-weight: 400;
+}
+.faq-item[open] summary::after { content: '−'; }
+.faq-item summary:hover { background: var(--papel-2); }
+.faq-item p {
+  padding: 0 20px 18px; font-size: 16px; color: var(--gris);
+  line-height: 1.6;
+}
+.faq-item a { color: var(--naranja); }
 
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {

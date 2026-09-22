@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sotonavarrojosue-creator.github.io/aparece-web/sitemap.xml

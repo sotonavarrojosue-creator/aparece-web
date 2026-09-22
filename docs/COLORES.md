@@ -11,7 +11,7 @@
 | `--papel-2` | `hsl(40 26% 90%)` | `#e3ddd0` | Fondos alternos |
 | `--naranja` | `hsl(24 95% 52%)` | `#ff5a1f` | Acentos, CTAs, hover |
 | `--naranja-osc` | `hsl(24 90% 42%)` | `#d94a15` | Hover states |
-| `--gris` | `hsl(220 8% 38%)` | `#565960` | Texto secundario |
+| `--gris` | `hsl(220 8% 32%)` | `#4B4F58` | Texto secundario |
 | `--gris-claro` | `hsl(220 8% 60%)` | `#8d9099` | Metadatos, timestamps |
 | `--hairline` | `hsl(220 10% 82%)` | `#cdd0d5` | Bordes ligeros |
 | `--verde` | `hsl(140 45% 48%)` | `#48a848` | Estados positivos (stats) |
