@@ -1,27 +1,18 @@
 /**
  * Monta <ShapeWaves /> en [data-shape-waves].
- * Sin WebGPU (o si falla) → fallback canvas brand-bg (siempre visible).
+ * - Con WebGPU real → ShapeWaves (React + vgpu) vía import dinámico.
+ * - Sin WebGPU o si algo falla → fallback canvas 2D (siempre visible).
+ *
+ * Sin imports estáticos de react/vgpu: si esas dependencias fallan,
+ * el fallback igual se ejecuta.
  */
-import { createElement } from 'react';
-import { createRoot } from 'react-dom/client';
-import ShapeWaves from './ShapeWaves.js';
 
 const BRAND_FONT = "'Barlow Condensed', 'Arial Narrow', sans-serif";
-const LIGHT = {
-  bg: '#f6f1e7',
-  color: '#8a847a',
-  hover: '#ff5a1f',
-  glow: 0
-};
-const DARK = {
-  bg: '#111318',
-  color: '#9a9a9a',
-  hover: '#ff5a1f',
-  glow: 0.35
-};
+const LIGHT = { bg: '#f6f1e7', color: '#8a847a', hover: '#ff5a1f', glow: 0 };
+const DARK = { bg: '#111318', color: '#9a9a9a', hover: '#ff5a1f', glow: 0.35 };
 
 async function hasAdapter() {
-  if (!navigator.gpu) return false;
+  if (typeof navigator === 'undefined' || !navigator.gpu) return false;
   try {
     const adapter = await navigator.gpu.requestAdapter();
     return !!adapter;
@@ -30,22 +21,19 @@ async function hasAdapter() {
   }
 }
 
-/** Fallback: importa brand-bg lógica mínima (canvas 2D) o pinta wordmark CSS */
-async function fallback(el) {
-  el.classList.add('sw-failed');
+async function mountFallback(el) {
   if (el.dataset.fbDone) return;
   el.dataset.fbDone = '1';
+  el.classList.add('sw-failed');
 
-  // Intentar el canvas brand-bg si existe el script helper
   try {
     const mod = await import('./brand-fallback.js');
     mod.mountBrandFallback(el);
     return;
-  } catch {
-    /* sigue con CSS */
+  } catch (err) {
+    console.warn('[shape-waves] brand-fallback import failed:', err);
   }
 
-  // Último recurso: wordmark con CSS
   if (!el.querySelector('.sw-fb-word')) {
     const word = document.createElement('div');
     word.className = 'sw-fb-word';
@@ -54,10 +42,11 @@ async function fallback(el) {
   }
 }
 
-function mountOne(el) {
+async function mountShapeWaves(el, deps) {
   if (el.dataset.swMounted) return;
   el.dataset.swMounted = '1';
 
+  const { createElement, createRoot, ShapeWaves } = deps;
   const theme = el.dataset.theme === 'light' ? LIGHT : DARK;
 
   const root = createRoot(el);
@@ -86,7 +75,8 @@ function mountOne(el) {
       introDuration: 1.6,
       paused: false,
       onError: () => {
-        fallback(el);
+        // ShapeWaves montó pero GPU falló a runtime → fallback
+        mountFallback(el);
       }
     })
   );
@@ -98,15 +88,28 @@ async function mountAll() {
 
   const gpuOk = await hasAdapter();
   if (!gpuOk) {
-    await Promise.all(nodes.map(fallback));
+    await Promise.all(nodes.map(mountFallback));
     return;
   }
 
   try {
-    nodes.forEach(mountOne);
+    const [{ createElement }, { createRoot }, { default: ShapeWaves }] = await Promise.all([
+      import('react'),
+      import('react-dom/client'),
+      import('./ShapeWaves.js')
+    ]);
+    const deps = { createElement, createRoot, ShapeWaves };
+    for (const el of nodes) {
+      try {
+        await mountShapeWaves(el, deps);
+      } catch (err) {
+        console.warn('[shape-waves] mount error:', err);
+        await mountFallback(el);
+      }
+    }
   } catch (err) {
-    console.warn('[shape-waves] mount error, fallback:', err);
-    await Promise.all(nodes.map(fallback));
+    console.warn('[shape-waves] deps load failed, fallback:', err);
+    await Promise.all(nodes.map(mountFallback));
   }
 }
 
