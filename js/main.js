@@ -158,8 +158,10 @@
       });
     }
 
-    // Bloques oscuros: fondo carbón, puntos claros → naranja
+    // Bloques oscuros: ahora usan ShapeWaves (js/shape-waves-bg.js).
+    // El fondo de puntos solo aplica si una sección NO tiene [data-shape-waves].
     document.querySelectorAll('.sec.dark').forEach((section) => {
+      if (section.querySelector('[data-shape-waves]')) return;
       const c = document.createElement('canvas');
       c.className = 'dots-bg';
       c.setAttribute('aria-hidden', 'true');
