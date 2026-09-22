@@ -37,13 +37,22 @@
 /* Fallback sin WebGPU: wordmark gigante + patrón sutil (siempre visible) */
 .sw-bg.sw-failed {
   background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+/* React quedó montado pero sin GPU: ocultar su capa opaca */
+.sw-bg.sw-failed > .shape-waves {
+  background-color: transparent !important;
+  opacity: 0;
 }
 
 .sw-bg.sw-failed::before {
   content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   font-weight: 700;
   font-size: clamp(4rem, 18vw, 14rem);
@@ -51,24 +60,25 @@
   line-height: 1;
   white-space: nowrap;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(138, 132, 122, 0.35);
+  -webkit-text-stroke: 1.5px rgba(138, 132, 122, 0.55);
   user-select: none;
   pointer-events: none;
   animation: sw-failed-drift 14s ease-in-out infinite alternate;
 }
 
 .sw-bg.sw-failed[data-theme='dark']::before {
-  -webkit-text-stroke: 1px rgba(154, 154, 154, 0.22);
+  -webkit-text-stroke: 1.5px rgba(154, 154, 154, 0.45);
 }
 
 .sw-bg.sw-failed[data-theme='light']::before {
-  -webkit-text-stroke: 1px rgba(17, 19, 24, 0.1);
+  -webkit-text-stroke: 1.5px rgba(17, 19, 24, 0.22);
 }
 
 .sw-bg.sw-failed::after {
   content: '';
   position: absolute;
   inset: -20%;
+  z-index: 1;
   background:
     radial-gradient(ellipse 40% 30% at 20% 30%, rgba(255, 90, 31, 0.08), transparent 60%),
     radial-gradient(ellipse 35% 40% at 80% 70%, rgba(255, 90, 31, 0.06), transparent 60%);

@@ -60,12 +60,21 @@ function mountOne(el, ShapeWaves, createElement, createRoot) {
 async function mountAll() {
   const nodes = [...document.querySelectorAll('[data-shape-waves]')];
 
-  if (!hasWebGPU) {
+  // Sin API GPU o sin adaptador real → fallback CSS, sin cargar React
+  let adapter = null;
+  if (hasWebGPU) {
+    try {
+      adapter = await navigator.gpu.requestAdapter();
+    } catch {
+      adapter = null;
+    }
+  }
+
+  if (!adapter) {
     nodes.forEach(applyFallback);
     return;
   }
 
-  // GPU disponible: cargar React + componente solo entonces
   try {
     const [{ createElement }, { createRoot }, { default: ShapeWaves }] = await Promise.all([
       import('react'),
