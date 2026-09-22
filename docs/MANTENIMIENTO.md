@@ -64,7 +64,7 @@ Para cambiar un color, solo modifica los valores `hsl()`.
 
 Para cursos **gratuitos** (próximamente):
 ```html
-<div class="course" data-reveal style="--rd:.XXs; opacity:0.55; pointer-events:none;">
+<div class="course course-locked" data-reveal style="--rd:.XXs">
   <div class="course-num">[08]</div>
   <h3>Nombre del curso</h3>
   <p>Descripción del curso.</p>
@@ -75,7 +75,7 @@ Para cursos **gratuitos** (próximamente):
 
 Para cursos **de pago** (próximamente):
 ```html
-<a class="course" data-reveal style="--rd:.XXs; text-decoration:none; color:inherit; border-right:none;" href="#planes">
+<a class="course course-link" data-reveal style="--rd:.XXs" href="#planes">
   <div class="course-num">[08]</div>
   <h3>Nombre del curso</h3>
   <p>Descripción del curso.</p>

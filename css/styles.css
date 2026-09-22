@@ -205,6 +205,7 @@ header.is-scrolled { box-shadow: 0 8px 24px -12px hsl(220 20% 10% / .25); }
   text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px;
 }
 .svc-intro p { color: var(--gris); max-width: 44ch; }
+.svc-cta { margin-top: 24px; }
 
 .svc-cat {
   border: 1.5px solid var(--hairline); padding: 28px 28px 24px;
@@ -345,6 +346,17 @@ header.is-scrolled { box-shadow: 0 8px 24px -12px hsl(220 20% 10% / .25); }
   margin-top: 18px; font-family: var(--mono); font-size: 12px;
   color: var(--gris); letter-spacing: .5px;
 }
+.courses-intro {
+  max-width: 56ch; margin-bottom: 36px;
+  color: hsl(40 20% 78%); font-size: 18px;
+}
+.form-intro {
+  max-width: 48ch; margin-bottom: 8px; color: var(--gris);
+}
+.course-locked { opacity: .55; pointer-events: none; }
+.course-link { text-decoration: none; color: inherit; border-right: none; }
+.course-link-last { border-right: none; border-bottom: none; }
+.foot-sub { display: block; margin-top: 4px; font-size: 11px; }
 
 /* ============================================================
    PROCESO

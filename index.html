@@ -178,7 +178,7 @@
         <div class="svc-intro" data-reveal>
           <h3>Su negocio apareciendo en Google</h3>
           <p>No vendemos "diseño web". Vendemos que cuando alguien busque su negocio en Google, lo encuentre — con web, WhatsApp y reseñas. La competencia no.</p>
-          <a class="btn" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" style="margin-top:24px;">Cotizar por WhatsApp →</a>
+          <a class="btn svc-cta" href="https://wa.me/50672169369?text=Hola%2C%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio">Cotizar por WhatsApp →</a>
         </div>
 
         <!-- Categoría: Presencia -->
@@ -352,31 +352,31 @@
           <h2>Cursos</h2>
           <span class="mono">[ 03 ] · APRENDÉ A PROGRAMAR — GRATIS</span>
         </div>
-        <p style="max-width:56ch; margin-bottom:36px; color:hsl(40 20% 78%); font-size:18px;" data-reveal>Cursos gratuitos, online y asincrónicos. Desde cero hasta proyectos reales. Sin registro, sin costo, sin fechas límite.</p>
+        <p class="courses-intro" data-reveal>Cursos gratuitos, online y asincrónicos. Desde cero hasta proyectos reales. Sin registro, sin costo, sin fechas límite.</p>
         <div class="courses-grid">
           <!-- Cursos gratuitos (próximamente) -->
-          <div class="course" data-reveal style="--rd:.05s; opacity:0.55; pointer-events:none;">
+          <div class="course course-locked" data-reveal style="--rd:.05s">
             <div class="course-num">[01]</div>
             <h3>Aprende Python desde cero</h3>
             <p>19 lecciones interactivas: desde "Hola Mundo" hasta un Web Scraper completo. Proyectos prácticos en cada módulo.</p>
             <div class="course-meta">19 LECCIONES · INTERACTIVO · PROYECTOS REALES</div>
             <span class="course-tag">Próximamente</span>
           </div>
-          <div class="course" data-reveal style="--rd:.12s; opacity:0.55; pointer-events:none;">
+          <div class="course course-locked" data-reveal style="--rd:.12s">
             <div class="course-num">[02]</div>
             <h3>Git y GitHub</h3>
             <p>Control de versiones, ramas, colaboración y trabajo en equipo. De "git init" a GitHub Actions y proyectos documentados.</p>
             <div class="course-meta">15 MÓDULOS · 90 EJERCICIOS · GRATIS</div>
             <span class="course-tag">Próximamente</span>
           </div>
-          <div class="course" data-reveal style="--rd:.19s; opacity:0.55; pointer-events:none;">
+          <div class="course course-locked" data-reveal style="--rd:.19s">
             <div class="course-num">[03]</div>
             <h3>HTML y CSS desde cero</h3>
             <p>Estructura semántica, Flexbox, Grid, responsive, formularios, accesibilidad y SEO. De "&lt;!DOCTYPE&gt;" a una landing page completa.</p>
             <div class="course-meta">15 MÓDULOS · 90+ EJERCICIOS · GRATIS</div>
             <span class="course-tag">Próximamente</span>
           </div>
-          <div class="course" data-reveal style="--rd:.26s; opacity:0.55; pointer-events:none;">
+          <div class="course course-locked" data-reveal style="--rd:.26s">
             <div class="course-num">[04]</div>
             <h3>JavaScript práctico</h3>
             <p>DOM, eventos, async/await, APIs, módulos ES6 y 4 proyectos reales: calculadora, gestor de tareas, clima y más.</p>
@@ -384,21 +384,21 @@
             <span class="course-tag">Próximamente</span>
           </div>
           <!-- Cursos de pago (próximamente) -->
-          <a class="course" data-reveal style="--rd:.33s; text-decoration:none; color:inherit; border-right:none;" href="#planes">
+          <a class="course course-link" data-reveal style="--rd:.33s" href="#planes">
             <div class="course-num">[05]</div>
             <h3>WordPress desde cero</h3>
             <p>Instalación, temas, plugins, SEO básico y seguridad. De "qué es WordPress" a su sitio publicado.</p>
             <div class="course-meta">10 MÓDULOS · $10/MESS · INTERACTIVO</div>
             <span class="course-tag">Próximamente</span>
           </a>
-          <a class="course" data-reveal style="--rd:.4s; text-decoration:none; color:inherit; border-right:none;" href="#planes">
+          <a class="course course-link" data-reveal style="--rd:.4s" href="#planes">
             <div class="course-num">[06]</div>
             <h3>Google Ads para negocios</h3>
             <p>Campañas de búsqueda local, presupuesto, métricas y optimización. Atraer clientes que lo buscan ahora.</p>
             <div class="course-meta">6 MÓDULOS · $15/MESS · INTERACTIVO</div>
             <span class="course-tag">Próximamente</span>
           </a>
-          <a class="course" data-reveal style="--rd:.47s; text-decoration:none; color:inherit; border-right:none; border-bottom:none;" href="#planes">
+          <a class="course course-link course-link-last" data-reveal style="--rd:.47s" href="#planes">
             <div class="course-num">[07]</div>
             <h3>WhatsApp Business completo</h3>
             <p>Perfil profesional, catálogo, respuestas rápidas, etiquetas, broadcast y métricas de negocio.</p>
@@ -531,7 +531,7 @@
           <h2>Contacto</h2>
           <span class="mono">[ 06 ] · ESCRÍBANOS DIRECTAMENTE</span>
         </div>
-        <p style="max-width:48ch; margin-bottom:8px; color:var(--gris);" data-reveal>Complete el formulario y le respondemos en menos de 24 horas hábiles.</p>
+        <p class="form-intro" data-reveal>Complete el formulario y le respondemos en menos de 24 horas hábiles.</p>
         <form class="contact-form" id="contact-form" data-reveal style="--rd:.1s" novalidate>
           <div class="form-group">
             <label for="cf-name">Nombre completo *</label>
@@ -571,7 +571,7 @@
     <div class="wrap foot">
       <div>
         <span>APARECÉ — Presencia Digital · CR</span>
-        <span style="display:block; margin-top:4px; font-size:11px;">Cartago, Costa Rica</span>
+        <span class="foot-sub">Cartago, Costa Rica</span>
       </div>
       <div class="foot-links">
         <a href="https://wa.me/50672169369">WhatsApp</a>
