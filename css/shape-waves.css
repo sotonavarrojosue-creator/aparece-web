@@ -1,0 +1,84 @@
+/* ============================================================
+   ShapeWaves — fondo WebGPU (React Bits)
+   ============================================================ */
+.shape-waves {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.shape-waves__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.shape-waves[data-ready='true'] .shape-waves__canvas {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape-waves__canvas {
+    transition: none;
+  }
+}
+
+/* Host absoluto dentro de la sección */
+.sw-host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Fallback cuando no hay WebGPU (wordmark + dots canvas) */
+.sw-host.sw-failed > .shape-waves {
+  display: none;
+}
+
+.sw-host.sw-failed .brand-bg__canvas {
+  display: block;
+}
+
+/* Wordmark CSS de último recurso */
+.sw-fb-word {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  font-size: clamp(4rem, 18vw, 14rem);
+  letter-spacing: 0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(138, 132, 122, 0.5);
+  pointer-events: none;
+  user-select: none;
+}
+
+.sw-host[data-theme='dark'] .sw-fb-word {
+  -webkit-text-stroke: 1.5px rgba(154, 154, 154, 0.45);
+}
+
+.sw-host[data-theme='light'] .sw-fb-word {
+  -webkit-text-stroke: 1.5px rgba(17, 19, 24, 0.22);
+}
+
+
+/* Contenido siempre encima */
+.hero-grid,
+.sec.dark > .wrap,
+.sec.dark .sec-head {
+  position: relative;
+  z-index: 1;
+}

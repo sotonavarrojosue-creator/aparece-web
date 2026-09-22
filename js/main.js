@@ -148,10 +148,9 @@
       requestAnimationFrame(tick);
     }
 
-    // Hero: fondo claro, puntos carbón → naranja
-    // (si ya tiene brand-bg, no duplicar)
+    // Hero / dark con ShapeWaves: no duplicar dots
     const hero = document.querySelector('.hero');
-    if (hero && !hero.querySelector('[data-brand-bg]')) {
+    if (hero && !hero.querySelector('[data-shape-waves]')) {
       const c = document.createElement('canvas');
       c.className = 'dots-bg';
       c.id = 'dots-bg';
@@ -164,9 +163,8 @@
       });
     }
 
-    // Bloques oscuros: puntos solo si no tienen brand-bg
     document.querySelectorAll('.sec.dark').forEach((section) => {
-      if (section.querySelector('[data-brand-bg]')) return;
+      if (section.querySelector('[data-shape-waves]')) return;
       const c = document.createElement('canvas');
       c.className = 'dots-bg';
       c.setAttribute('aria-hidden', 'true');
