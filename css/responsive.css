@@ -2,11 +2,16 @@
    APARECÉ — Responsive breakpoints
    ============================================================ */
 
+/* --- Laptop chica / tablet ancha (≤1160px): el hero recupera su padding --- */
+@media (max-width: 1160px) {
+  .hero { padding-inline: 24px; }
+}
+
 /* --- Tablet (≤900px) --- */
 @media (max-width: 900px) {
   /* Hero */
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero { padding: 56px 0 48px; }
+  .hero { padding: 56px 24px 48px; }
 
   /* Nav: hamburger visible, links ocultos */
   .hamburger { display: flex; order: 3; }
@@ -43,6 +48,10 @@
   /* Portafolio */
   .portfolio-grid { grid-template-columns: 1fr; gap: 40px; }
   .port-card.featured { grid-row: auto; }
+
+  /* Hero: blooms contenidos en pantallas chicas */
+  .hero::before { width: 380px; height: 380px; right: -180px; top: -160px; }
+  .hero::after { display: none; }
 }
 
 /* --- Mobile (≤560px) --- */

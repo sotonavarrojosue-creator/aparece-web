@@ -423,4 +423,42 @@
     despertar();
   })();
 
+  /* ----------------------------------------------------------
+     12. SCRAMBLE — los títulos se "decodifican" al entrar
+     ---------------------------------------------------------- */
+  (function () {
+    if (reduce) return;
+    var GLIFOS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&/0123456789';
+    var titulos = document.querySelectorAll('.sec-head h2');
+    if (!titulos.length) return;
+    function animar(el) {
+      var final = el.textContent;
+      if (!final.trim()) return;
+      el.setAttribute('aria-label', final);
+      var t0 = performance.now(), dur = 850;
+      (function paso(now) {
+        var p = Math.min(1, (now - t0) / dur);
+        var n = Math.round(p * final.length);
+        var txt = final.slice(0, n);
+        for (var i = n; i < final.length; i++) {
+          var c = final[i];
+          txt += c === ' ' ? ' ' : GLIFOS[(Math.random() * GLIFOS.length) | 0];
+        }
+        el.textContent = txt;
+        if (p < 1) requestAnimationFrame(paso);
+        else el.textContent = final;
+      })(t0);
+    }
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        animar(e.target);
+      });
+    }, { threshold: 0.6 });
+    titulos.forEach(function (el) {
+      if (!el.children.length) io.observe(el);
+    });
+  })();
+
 })();

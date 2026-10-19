@@ -654,6 +654,88 @@ body {
 .price-table tbody tr:hover td { background: hsl(24 95% 52% / .07); }
 
 
+/* ============================================================
+   IMPACTO VISUAL: blooms, grano, botones vivos, wordmark
+   ============================================================ */
+
+/* Halos de color animados detrás del hero */
+.hero::before, .hero::after {
+  content: ""; position: absolute; z-index: 0; pointer-events: none;
+  border-radius: 50%; filter: blur(70px); mix-blend-mode: multiply;
+}
+.hero::before {
+  width: 620px; height: 620px; right: -140px; top: -220px;
+  background: radial-gradient(circle, hsl(24 95% 52% / .24), transparent 64%);
+  animation: bloom-a 11s ease-in-out infinite alternate;
+}
+.hero::after {
+  width: 480px; height: 480px; left: -160px; bottom: -200px;
+  background: radial-gradient(circle, hsl(38 95% 55% / .18), transparent 64%);
+  animation: bloom-b 13s ease-in-out infinite alternate;
+}
+@keyframes bloom-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-50px, 40px, 0) scale(1.16); }
+}
+@keyframes bloom-b {
+  from { transform: translate3d(0, 0, 0) scale(1.1); }
+  to { transform: translate3d(60px, -30px, 0) scale(1); }
+}
+
+/* Glow animado en secciones oscuras */
+.sec.dark::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(42% 60% at 12% 8%, hsl(24 95% 52% / .16), transparent 62%),
+    radial-gradient(38% 55% at 92% 94%, hsl(24 95% 52% / .11), transparent 62%);
+  animation: darkglow 9s ease-in-out infinite alternate;
+}
+@keyframes darkglow { from { opacity: .55; } to { opacity: 1; } }
+
+/* Grano de película sobre toda la página */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Wordmark gigante detrás del CTA final */
+.cta-final::after {
+  content: "APARECÉ"; position: absolute; z-index: -1; right: -24px; bottom: -56px;
+  font-family: var(--disp); font-weight: 800; line-height: .8; letter-spacing: 2px;
+  font-size: clamp(120px, 17vw, 230px); color: transparent;
+  -webkit-text-stroke: 1.5px hsl(24 95% 52% / .28);
+  pointer-events: none; user-select: none;
+}
+
+/* Botones primarios: gradiente que se desplaza + barrido de brillo */
+.btn:not(.ghost) {
+  background-image: linear-gradient(120deg, var(--carbono) 0%, hsl(24 35% 16%) 45%, var(--carbono) 100%);
+  background-size: 220% 100%;
+  transition: background-position .55s var(--ease), transform .25s var(--ease),
+              border-color .2s, color .2s, box-shadow .3s var(--ease);
+}
+.btn:not(.ghost):hover {
+  background-position: 100% 0;
+  box-shadow: 0 12px 26px -12px hsl(24 95% 52% / .5);
+}
+.btn::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, .22) 50%, transparent 60%);
+  background-size: 240% 100%; background-position: 130% 0;
+  transition: background-position .65s var(--ease);
+}
+.btn:hover::before, .btn:focus-visible::before { background-position: -40% 0; }
+
+/* Ghost: relleno que barre desde la izquierda */
+.btn.ghost {
+  background-color: transparent;
+  background-image: linear-gradient(var(--carbono), var(--carbono));
+  background-size: 0% 100%; background-repeat: no-repeat;
+  transition: background-size .35s var(--ease), color .2s, border-color .2s;
+}
+.btn.ghost:hover { background-size: 100% 100%; }
+
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -670,4 +752,5 @@ body {
   #scroll-progress { transform: scaleX(var(--p, 0)) !important; }
   .fx-shiny::after { display: none; }
   [data-spotlight]::before { display: none; }
+  body::after { opacity: .045 !important; }
 }
