@@ -615,8 +615,18 @@ footer {
 body {
   overflow-x: clip;
   background-image:
+    radial-gradient(560px circle at var(--cx, 50%) var(--cy, 28%), hsl(24 95% 52% / .07), transparent 70%),
     radial-gradient(52% 30% at 88% 0%, hsl(24 95% 52% / .055), transparent 62%),
     radial-gradient(46% 26% at 6% 100%, hsl(24 95% 52% / .05), transparent 60%);
+  background-attachment: fixed, scroll, scroll;
+}
+/* Touch no tiene aura (sin cursor): solo los halos estáticos */
+@media (hover: none) {
+  body {
+    background-image:
+      radial-gradient(52% 30% at 88% 0%, hsl(24 95% 52% / .055), transparent 62%),
+      radial-gradient(46% 26% at 6% 100%, hsl(24 95% 52% / .05), transparent 60%);
+  }
 }
 
 /* Ticker: banda oscura que acelera con el scroll */
@@ -735,6 +745,24 @@ body::after {
   transition: background-size .35s var(--ease), color .2s, border-color .2s;
 }
 .btn.ghost:hover { background-size: 100% 100%; }
+
+
+/* ============================================================
+   FONDO VIVO: malla interactiva + parallax de blooms
+   ============================================================ */
+
+/* Lienzo de malla de puntos que responde al cursor */
+.sec[data-mesh] { position: relative; }
+.sec[data-mesh] > .wrap { position: relative; z-index: 1; }
+.mesh-lienzo {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+
+/* Los blooms del hero derivan con el cursor (translate no pisa la animación) */
+.hero::before, .hero::after {
+  translate: calc((var(--cx, 50%) - 50%) * .22) calc((var(--cy, 28%) - 50%) * .14);
+}
 
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {

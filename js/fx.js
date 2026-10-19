@@ -461,4 +461,131 @@
     });
   })();
 
+  /* ---------- 13 · FONDO VIVO ---------- */
+  (function () {
+    if (reduce) return;
+
+    /* Aura: halo suave que persigue al cursor en toda la página */
+    var raiz = document.documentElement;
+    var tx = 50, ty = 28, ax = 50, ay = 28, rafAura = 0;
+    function pintarAura() {
+      rafAura = 0;
+      ax += (tx - ax) * 0.09;
+      ay += (ty - ay) * 0.09;
+      raiz.style.setProperty('--cx', ax.toFixed(2) + '%');
+      raiz.style.setProperty('--cy', ay.toFixed(2) + '%');
+      if (Math.abs(tx - ax) > 0.08 || Math.abs(ty - ay) > 0.08) rafAura = requestAnimationFrame(pintarAura);
+    }
+    window.addEventListener('mousemove', function (e) {
+      tx = (e.clientX / window.innerWidth) * 100;
+      ty = (e.clientY / window.innerHeight) * 100;
+      if (!rafAura) rafAura = requestAnimationFrame(pintarAura);
+    }, { passive: true });
+
+    /* Malla: puntos que huyen del cursor y se encienden a su paso */
+    if (sinHover) return;
+
+    document.querySelectorAll('[data-mesh]').forEach(function (host) {
+      var lienzo = document.createElement('canvas');
+      lienzo.className = 'mesh-lienzo';
+      lienzo.setAttribute('aria-hidden', 'true');
+      host.insertBefore(lienzo, host.firstChild);
+
+      var ctx = lienzo.getContext('2d');
+      var dpr = Math.min(2, window.devicePixelRatio || 1);
+      var W = 0, H = 0;
+      var nodos = [];
+      var mx = -9999, my = -9999;
+      var activo = false, rafMalla = 0;
+      var oscuro = host.classList.contains('dark');
+
+      function medir() {
+        W = host.clientWidth; H = host.clientHeight;
+        lienzo.width = Math.round(W * dpr);
+        lienzo.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        nodos = [];
+        var paso = W < 720 ? 56 : 46;
+        for (var y = paso * 0.55; y < H + paso; y += paso) {
+          for (var x = paso * 0.55; x < W + paso; x += paso) {
+            nodos.push({ ox: x, oy: y, x: x, y: y, ph: Math.random() * 6.2832 });
+          }
+        }
+      }
+
+      function tic(t) {
+        rafMalla = 0;
+        if (!activo) return;
+        t /= 1000;
+        ctx.clearRect(0, 0, W, H);
+
+        var R = 140;
+        var i, n, dx, dy, d, f, tx2, ty2;
+        for (i = 0; i < nodos.length; i++) {
+          n = nodos[i];
+          tx2 = n.ox + Math.sin(t * 0.5 + n.ph) * 5;
+          ty2 = n.oy + Math.cos(t * 0.42 + n.ph * 1.3) * 5;
+          dx = tx2 - mx; dy = ty2 - my;
+          d = Math.sqrt(dx * dx + dy * dy);
+          if (d < R) {
+            f = (1 - d / R) * 24;
+            tx2 += (dx / (d || 1)) * f;
+            ty2 += (dy / (d || 1)) * f;
+          }
+          n.x += (tx2 - n.x) * 0.12;
+          n.y += (ty2 - n.y) * 0.12;
+        }
+
+        /* Conexiones que emergen del cursor */
+        ctx.lineWidth = 1;
+        for (i = 0; i < nodos.length; i++) {
+          n = nodos[i];
+          dx = n.x - mx; dy = n.y - my;
+          d = Math.sqrt(dx * dx + dy * dy);
+          if (d < R) {
+            ctx.strokeStyle = 'rgba(249,109,16,' + ((1 - d / R) * 0.42).toFixed(3) + ')';
+            ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(mx, my); ctx.stroke();
+          }
+        }
+
+        /* Puntos: apagados en reposo, naranjas cerca del cursor */
+        var base = oscuro ? '232,228,220' : '24,23,20';
+        var alfa = oscuro ? '0.30' : '0.18';
+        for (i = 0; i < nodos.length; i++) {
+          n = nodos[i];
+          dx = n.x - mx; dy = n.y - my;
+          d = Math.sqrt(dx * dx + dy * dy);
+          var cal = d < R ? 1 - d / R : 0;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, 1.15 + cal * 2.1, 0, 6.2832);
+          ctx.fillStyle = cal > 0.02
+            ? 'rgba(249,109,16,' + (0.4 + cal * 0.6).toFixed(3) + ')'
+            : 'rgba(' + base + ',' + alfa + ')';
+          ctx.fill();
+        }
+        rafMalla = requestAnimationFrame(tic);
+      }
+
+      host.addEventListener('mousemove', function (e) {
+        var r = host.getBoundingClientRect();
+        mx = e.clientX - r.left; my = e.clientY - r.top;
+      }, { passive: true });
+      host.addEventListener('mouseleave', function () { mx = -9999; my = -9999; });
+
+      if ('ResizeObserver' in window) new ResizeObserver(medir).observe(host);
+      else window.addEventListener('resize', medir);
+      medir();
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (ent) {
+          activo = ent[0].isIntersecting;
+          if (activo && !rafMalla) rafMalla = requestAnimationFrame(tic);
+        }, { rootMargin: '120px' }).observe(host);
+      } else {
+        activo = true;
+        rafMalla = requestAnimationFrame(tic);
+      }
+    });
+  })();
+
 })();
