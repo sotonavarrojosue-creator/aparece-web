@@ -9,7 +9,9 @@
   .hero { padding: 56px 0 48px; }
 
   /* Nav: hamburger visible, links ocultos */
-  .hamburger { display: flex; }
+  .hamburger { display: flex; order: 3; }
+  .nav { gap: 12px; }
+  .nav > .btn { order: 2; margin-left: auto; }
 
   .nav-links {
     display: none;
@@ -45,6 +47,13 @@
 
 /* --- Mobile (≤560px) --- */
 @media (max-width: 560px) {
+  /* Header compacto: marca + CTA + hamburguesa caben en 360-390px */
+  .nav { gap: 10px; }
+  .brand svg { height: 27px; }
+  .nav .btn { padding: 10px 13px; font-size: 11px; letter-spacing: .4px; white-space: nowrap; }
+  .nav .cta-largo { display: none; }
+  .nav .cta-corto { display: inline; }
+
   .steps, .courses-grid { grid-template-columns: 1fr; }
   .step, .course {
     border-right: none !important;

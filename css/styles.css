@@ -553,6 +553,107 @@ footer {
 }
 .faq-item a { color: var(--naranja); }
 
+/* ============================================================
+   EFECTOS INTERACTIVOS (js/fx.js · adaptados de ReactBits)
+   ============================================================ */
+
+/* CTA del header: texto completo en desktop, corto en móvil */
+.cta-corto { display: none; }
+
+/* Barra de progreso de lectura */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 300;
+  background: var(--naranja); pointer-events: none;
+  transform: scaleX(var(--p, 0)); transform-origin: 0 50%;
+}
+
+/* Barrido de brillo sobre el texto (overlay: no oculta las letras) */
+.fx-shiny { position: relative; display: inline-block; overflow: hidden; }
+.fx-shiny::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(110deg, transparent 42%, rgba(255, 255, 255, .95) 50%, transparent 58%);
+  transform: translateX(-130%);
+  animation: fx-sheen 3.6s cubic-bezier(.4, 0, .2, 1) infinite;
+}
+@keyframes fx-sheen {
+  0% { transform: translateX(-130%); }
+  60%, 100% { transform: translateX(130%); }
+}
+
+/* Cometa recorriendo el borde de los botones (StarBorder) */
+.btn { position: relative; }
+.comet-lienzo { position: absolute; pointer-events: none; z-index: 2; }
+
+/* Chispas al hacer click */
+.fx-spark-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 400; }
+
+/* Caret de máquina de escribir (data-ciclo) */
+.fx-caret { border-right: 2px solid var(--naranja); padding-right: 2px; animation: fx-caret .8s steps(1) infinite; }
+@keyframes fx-caret {
+  0%, 49% { border-color: var(--naranja); }
+  50%, 100% { border-color: transparent; }
+}
+
+/* ScrollSpy: resalta el link de la sección visible */
+.nav-links a.is-active { color: var(--naranja); }
+.nav-links a.is-active::after { width: 100%; }
+
+/* Spotlight: brillo que sigue al cursor dentro de tarjetas */
+[data-spotlight] { position: relative; isolation: isolate; }
+[data-spotlight]::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  border-radius: inherit; opacity: 0; transition: opacity .3s var(--ease);
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 90, 31, .14), transparent 70%);
+}
+[data-spotlight]:hover::before { opacity: 1; }
+@media (hover: none) { [data-spotlight]::before { display: none; } }
+
+/* Tilt 3D suave de tarjetas */
+[data-tilt] { will-change: transform; transform-style: preserve-3d; }
+
+/* Lavado ambiental del documento: halos naranjas muy suaves */
+body {
+  overflow-x: clip;
+  background-image:
+    radial-gradient(52% 30% at 88% 0%, hsl(24 95% 52% / .055), transparent 62%),
+    radial-gradient(46% 26% at 6% 100%, hsl(24 95% 52% / .05), transparent 60%);
+}
+
+/* Ticker: banda oscura que acelera con el scroll */
+.ticker {
+  overflow: hidden; background: var(--carbono);
+  border-top: 1.5px solid var(--carbono);
+  border-bottom: 1.5px solid var(--carbono);
+  padding: 15px 0;
+}
+.ticker-track {
+  display: inline-flex; align-items: center; gap: 36px;
+  white-space: nowrap; will-change: transform;
+}
+.ticker-track span {
+  font-family: var(--mono); font-size: 12.5px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--papel);
+}
+.ticker-track i { font-style: normal; font-size: 10px; color: var(--naranja); }
+
+/* Aurora suave detrás del CTA final */
+.cta-final { position: relative; z-index: 0; overflow: hidden; }
+.cta-final::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  left: 50%; margin-left: -330px; top: -60px; width: 660px; height: 660px;
+  background: radial-gradient(circle, hsl(24 95% 52% / .14), transparent 62%);
+  animation: aurora 9s ease-in-out infinite alternate;
+}
+@keyframes aurora {
+  from { transform: scale(1); opacity: .65; }
+  to { transform: scale(1.18); opacity: 1; }
+}
+
+/* Tabla de precios: resalta la fila bajo el cursor */
+.price-table td { transition: background .18s var(--ease); }
+.price-table tbody tr:hover td { background: hsl(24 95% 52% / .07); }
+
+
 /* --- Reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -560,4 +661,13 @@ footer {
     transform: none !important; opacity: 1 !important; clip-path: none !important;
   }
   html { scroll-behavior: auto; }
+}
+
+/* Excepciones del bloque RM (los efectos de arriba):
+   la barra de progreso es informativa → sigue funcionando;
+   el sheen y el spotlight se ocultan para no dejar restos estáticos. */
+@media (prefers-reduced-motion: reduce) {
+  #scroll-progress { transform: scaleX(var(--p, 0)) !important; }
+  .fx-shiny::after { display: none; }
+  [data-spotlight]::before { display: none; }
 }
